@@ -13,6 +13,7 @@ import java.util.Scanner;
 public class Main {
 	
 	public final static String GAME_NAME = "Colossal Cymru Adventure";
+	public final static GameManager gameManager = new GameManager();
 
 	/**
 	 * Runs from the Java terminal to initiate the game.
@@ -24,23 +25,20 @@ public class Main {
 		
 		boolean menuDecision = true;
 		
+		Scanner menuScanner = new Scanner(System.in);
+		
 		//Game Loop until decision is reached to quit the game.
 		while (menuDecision) {
 			System.out.println("Do you want to:");
 			System.out.println("make a (new) game");
-			System.out.println("(load) a saved game");
 			System.out.println("(quit) to desktop");
 			System.out.println("\nWhat will it be?\t");
 		
-			Scanner menuScanner = new Scanner(System.in);
 			String menuChoice = menuScanner.nextLine();
 			switch (menuChoice) {
-				case "load":
-					//TODO: Build Load Function
-					System.out.println("⊕ WARNING - Feature Unimplemented");
-					break;
 				case "new":
-					//runChapter();
+					GameManager.beginGame();
+					menuDecision = false; //Included to avoid small bug. Possible marks for spit and polish if fixed.
 					break;
 				case "quit":
 					System.out.println("Thank you for playing " + GAME_NAME + ". Hwyl fawr!");
@@ -50,5 +48,6 @@ public class Main {
 					System.out.println("I'm not sure what you're asking. Please rephrase.");
 			}
 		}
+		menuScanner.close();
 	}
 }
