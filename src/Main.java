@@ -13,7 +13,6 @@ import java.util.Scanner;
 public class Main {
 	
 	public final static String GAME_NAME = "Colossal Cymru Adventure"; //Permanent store of game's title.
-	public final static GameManager gameManager = new GameManager(); //Static instance of Game Manager (one GameManager per game).
 
 	/**
 	 * Runs from the Java terminal to initiate the game.
