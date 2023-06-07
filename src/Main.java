@@ -12,8 +12,8 @@ import java.util.Scanner;
  */
 public class Main {
 	
-	public final static String GAME_NAME = "Colossal Cymru Adventure";
-	public final static GameManager gameManager = new GameManager();
+	public final static String GAME_NAME = "Colossal Cymru Adventure"; //Permanent store of game's title.
+	public final static GameManager gameManager = new GameManager(); //Static instance of Game Manager (one GameManager per game).
 
 	/**
 	 * Runs from the Java terminal to initiate the game.
@@ -23,9 +23,8 @@ public class Main {
 		
 		System.out.println("Welcome to " + GAME_NAME + "!");
 		
-		boolean menuDecision = true;
-		
-		Scanner menuScanner = new Scanner(System.in);
+		Scanner menuScanner = new Scanner(System.in); //Provide read of menu choice.
+		boolean menuDecision = true; //Establish game exit point.
 		
 		//Game Loop until decision is reached to quit the game.
 		while (menuDecision) {
@@ -35,16 +34,19 @@ public class Main {
 			System.out.println("\nWhat will it be?\t");
 		
 			String menuChoice = menuScanner.nextLine();
+			
+			//Handles choice of menu input. Switch chosen to allow for expansion.
 			switch (menuChoice) {
 				case "new":
-					GameManager.beginGame();
+					GameManager.beginGame(); //Hand control to the GameManager.
 					menuDecision = false; //Included to avoid small bug. Possible marks for spit and polish if fixed.
 					break;
 				case "quit":
 					System.out.println("Thank you for playing " + GAME_NAME + ". Hwyl fawr!");
-					menuDecision = false;
+					menuDecision = false; //Exit game loop
 					break;
 				default:
+					//Default to handle undefined menu options from user.
 					System.out.println("I'm not sure what you're asking. Please rephrase.");
 			}
 		}

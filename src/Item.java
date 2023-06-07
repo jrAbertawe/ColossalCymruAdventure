@@ -1,6 +1,5 @@
-
 /**
- * This class describes a collectible item that can be picked up.
+ * This class describes a collectible item rewarded after every battle.
  * @author jackroberts
  *
  */
