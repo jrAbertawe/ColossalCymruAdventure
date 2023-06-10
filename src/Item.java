@@ -4,16 +4,17 @@
  *
  */
 public enum Item {
-  /** The login type for guest access. */
+  /** The sword item type. */
   SWORD,
-  /** The login type for access denied. */
+  /**  The potion item type. */
   POTION,
-  /** The login type for an unsuccessful login. */
+  /** The bara brith item type. */
   BARA_BRITH,
-  /** The login type for a successful login. */
+  /**  The text book item type. */
   TEXT_BOOK,
-  /** */
+  /** The spear item type. */
   SPEAR,
-  /** */
+  /** The phone item type. */
   PHONE;
+  
 }
