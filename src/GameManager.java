@@ -142,6 +142,7 @@ public class GameManager {
     System.out.println("Enter item to use: ");
     String item = itemScanner.nextLine();
     Item selectedItem = Item.stringToItem(item);
+    processItem(selectedItem);
   }
 
   public static void processItem(Item selectedItem) {
