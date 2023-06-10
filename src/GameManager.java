@@ -144,29 +144,35 @@ public class GameManager {
     Item selectedItem = Item.stringToItem(item);
     processItem(selectedItem);
   }
-
+  
+  /**
+   * Processes the item selected by the player.
+   * 
+   * <p>Side-effect Changes the players health, experience, or gold depending on
+   * input.
+   * 
+   * @param selectedItem the item selected by the player.
+   */
   public static void processItem(Item selectedItem) {
-    if (selectedItem.equals(Item.SWORD)) { 
+    if (selectedItem.equals(Item.SWORD) || selectedItem.equals(Item.SPEAR)) {
       System.out.println("Can't use that here!");
     } else if (selectedItem.equals(Item.POTION)) {
       // TODO increase player health by 20.
       System.out.println("You take a swig of potion.");
     } else if (selectedItem.equals(Item.BARA_BRITH)) {
       System.out.println("The taste of childhood rejuvenates you.");
-      // TODO increase player health by 50. 
+      // TODO increase player health by 50.
     } else if (selectedItem.equals(Item.TEXT_BOOK)) {
-      System.out.println("Our new found knowledge of Discrete Maths\n"
-          + "emboldens you.");
+      System.out.println(
+          "Our new found knowledge of Discrete Maths\n" + "emboldens you.");
       // TODO increase player experience by 75
-    } else if (selectedItem.equals(Item.SPEAR)) {
-      System.out.println("Can't use that here!");
     } else if (selectedItem.equals(Item.PHONE)) {
       System.out.println("You can call in some help.");
-     // TODO increase player experience by 100.
-     // TODO decrease gold by 10 if gold is more than 10.
+      // TODO increase player experience by 100.
+      // TODO decrease gold by 10 if gold is more than 10.
     } else {
       throw new IllegalArgumentException("Invalid item!");
-    } 
+    }
   }
   
   /**
