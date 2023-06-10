@@ -1,4 +1,8 @@
 /**
+ * This file describes a collectible item rewarded after every battle.
+ */
+
+/**
  * This enum describes a collectible item rewarded after every battle.
  * 
  * @author jackroberts
