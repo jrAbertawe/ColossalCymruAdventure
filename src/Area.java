@@ -25,7 +25,7 @@ public class Area {
   /** Minimum length of monster name. */
   public static final int MONSTER_NAME_MIN = 0;
 
-  private int areaLevel; // Level of difficulty. 
+  private int areaLevel; // Level of difficulty.
   private Actor monster; // Actor if monster is present in area.
   private String description; // Description of area.
 
@@ -68,7 +68,7 @@ public class Area {
    * @throws IllegalArgumentException if level is invalid.
    */
   public void setAreaLevel(int areaLevel) {
-    if (areaLevel >= DESCRIPTION_MAX || areaLevel <= DESCRIPTION_MIN) {
+    if (areaLevel <= LEVLEL_MAX && areaLevel >= LEVLEL_MIN) {
       this.areaLevel = areaLevel;
     } else {
       throw new IllegalArgumentException("Level invalid!");
@@ -96,8 +96,8 @@ public class Area {
    * @throws IllegalArgumentException if monster name is invalid.
    */
   public void setMonster(Actor monster) {
-    if (monster.getName().length() >= MONSTER_NAME_MAX
-        || monster.getName().length() <= MONSTER_NAME_MIN) {
+    if (monster.getName().length() <= MONSTER_NAME_MAX
+        && monster.getName().length() >= MONSTER_NAME_MIN) {
       this.monster = monster;
     } else {
       throw new IllegalArgumentException("Monster name invalid!");
@@ -125,8 +125,8 @@ public class Area {
    * @throws IllegalArgumentException if description is invalid.
    */
   public void setDescription(String description) {
-    if (description.length() >= DESCRIPTION_MAX
-        || description.length() <= DESCRIPTION_MIN) {
+    if (description.length() <= DESCRIPTION_MAX
+        && description.length() >= DESCRIPTION_MIN) {
       this.description = description;
     } else {
       throw new IllegalArgumentException("Description invalid!");

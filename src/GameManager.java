@@ -138,8 +138,8 @@ public class GameManager {
    * <p>Side-effect free.
    */
   private static void beginUse() {
-    System.out.println("WARNING - Feature Unimplemented");
-    // TODO Handle using items if the player has them.
+    System.out.println("");
+
   }
 
   /**
