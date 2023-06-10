@@ -16,9 +16,7 @@ import java.util.Scanner;
  */
 public class Main {
 
-  /**
-   * Permanent store of game's title.
-   */
+  /** Permanent store of game's title. */
   public static final String GAME_NAME = "Colossal Cymru Adventure";
 
   /**

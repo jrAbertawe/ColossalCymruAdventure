@@ -12,34 +12,22 @@
  */
 public class Area {
 
-  /**
-   * Maximum length of description.
-   */
+  /** Maximum length of description. */
   public static final int DESCRIPTION_MAX = 300;
-  /**
-   * Minimum length of description.
-   */
+  /** Minimum length of description. */
   public static final int DESCRIPTION_MIN = 0;
-  /**
-   * Maximum size of level.
-   */
+  /** Maximum size of level. */
   public static final int LEVLEL_MAX = 100;
-  /**
-   * Minimum size of level.
-   */
+  /** Minimum size of level. */
   public static final int LEVLEL_MIN = 0;
-  /**
-   * Maximum length of monster name.
-   */
+  /** Maximum length of monster name. */
   public static final int MONSTER_NAME_MAX = 100;
-  /**
-   * Minimum length of monster name.
-   */
+  /** Minimum length of monster name. */
   public static final int MONSTER_NAME_MIN = 0;
 
-  private int areaLevel = 0;
-  private Actor monster = null; // Actor if monster is present in area.
-  private String description = null;
+  private int areaLevel; // Level of difficulty. 
+  private Actor monster; // Actor if monster is present in area.
+  private String description; // Description of area.
 
   /**
    * Creates a new area with the given attributes.

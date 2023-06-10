@@ -16,13 +16,9 @@ import java.util.Scanner;
  */
 public class GameManager {
 
-  /**
-   * Starting position for player on x axis.
-   */
+  /** Starting position for player on x axis. */
   public static final int PLAYER_STARTING_POS_X = 0;
-  /**
-   * Starting position for player on y axis.
-   */
+  /** Starting position for player on y axis. */
   public static final int PLAYER_STARTING_POS_Y = 0;
 
   private Map gameMap; // Create new map for entire game.
