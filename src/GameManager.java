@@ -23,7 +23,7 @@ public class GameManager {
   /**
    * Starting position for player on y axis.
    */
-  public static final int PLAYER_STARTING_POS_y = 0;
+  public static final int PLAYER_STARTING_POS_Y = 0;
 
   private Map gameMap; // Create new map for entire game.
   private int playerX; // Tracks x coord of player. player starts in top left
@@ -39,7 +39,7 @@ public class GameManager {
   public GameManager() throws FileNotFoundException {
     setGameMap(new Map());
     this.setPlayerX(PLAYER_STARTING_POS_X);
-    this.setPlayerY(PLAYER_STARTING_POS_y);
+    this.setPlayerY(PLAYER_STARTING_POS_Y);
     beginGame();
   }
 
