@@ -69,7 +69,7 @@ public class Map {
       String description = mapReader.next(); // Reads the maps description.
       int level = Integer.parseInt(mapReader.next()); // Reads the maps level.
       // Reads the maps actor.
-      Actor actor = new Actor(mapReader.nextLine().replace("/", "")); 
+      Actor actor = new Monster(mapReader.nextLine().replace("/", "")); 
       Area area = new Area(description, level, actor); // Creates new area.
       int row = lineNo % MAX_MAP_SIZE_HOR; // Calculation for map row.
       int col = lineNo / MAX_MAP_SIZE_VER; // Calculation for map column.
