@@ -8,6 +8,7 @@ public class Area {
 	private int areaLevel = 0;
 	private Actor monster = null; //Actor if monster is present in area. Null otherwise.
 	private String description = null;
+	private static int lineNo = 0;
 	
 	/**
 	 * Creates a new area with the given attributes.
@@ -19,6 +20,8 @@ public class Area {
 		this.areaLevel = areaLevel;
 		this.monster = monster;
 		this.description = description;
+		// Increment line number in static variable
+		lineNo++;
 	}
 	
 	/**
@@ -70,6 +73,10 @@ public class Area {
 	 */
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public int getLineNo() {
+		return lineNo;
 	}
 
 }

@@ -19,7 +19,7 @@ public abstract class Actor {
     private final int MAXIMUM_HEALTH = 100;
     public Actor(int level, String name) {
 
-        if (level > MINIMUM_LEVEL && level < MAXIMUM_LEVEL) {
+        if (level >= MINIMUM_LEVEL && level <= MAXIMUM_LEVEL) {
             this.level = level;
         } else {
             throw new IllegalArgumentException("Level must be between 0" +
