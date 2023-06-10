@@ -16,22 +16,15 @@ import java.util.Scanner;
 
 public class Map {
 
-  /**
-   * File path for the game map.
-   */
+  /** File path for the game map. */
   public static final String GAME_MAP_PATH = "world.txt";
-  /**
-   * File for the game map.
-   */
+  /** File for the game map. */
   public static final File GAME_MAP_FILE = new File(GAME_MAP_PATH);
-  /**
-   * Maximum allowed horiz size of map.
-   */
+  /** Maximum allowed horiz size of map. */
   public static final int MAX_MAP_SIZE_HOR = 5;
-  /**
-   * Maximum allowed vert size of map.
-   */
+  /** Maximum allowed vert size of map. */
   public static final int MAX_MAP_SIZE_VER = 5;
+  
   private Area[][] grid; // 2D array representing 2D grid of cells.
 
   /**
