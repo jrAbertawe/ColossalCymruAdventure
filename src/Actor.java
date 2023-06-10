@@ -9,7 +9,7 @@
  * @version 1.1
  * @modified 2023-06-10
  */
-public class Actor {
+public abstract class Actor {
   private String name; // Name of actor.
 
   /**

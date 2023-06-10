@@ -171,7 +171,7 @@ public class GameManager {
       // TODO increase player experience by 100.
       // TODO decrease gold by 10 if gold is more than 10.
     } else {
-      throw new IllegalArgumentException("Invalid item!");
+      System.out.println("I'm not sure what you're asking. Please rephrase.");
     }
   }
   
