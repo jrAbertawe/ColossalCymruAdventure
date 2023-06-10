@@ -138,10 +138,36 @@ public class GameManager {
    * <p>Side-effect free.
    */
   private static void beginUse() {
-    System.out.println("");
-
+    Scanner itemScanner = new Scanner(System.in);
+    System.out.println("Enter item to use: ");
+    String item = itemScanner.nextLine();
+    Item selectedItem = Item.stringToItem(item);
   }
 
+  public static void processItem(Item selectedItem) {
+    if (selectedItem.equals(Item.SWORD)) { 
+      System.out.println("Can't use that here!");
+    } else if (selectedItem.equals(Item.POTION)) {
+      // TODO increase player health by 20.
+      System.out.println("You take a swig of potion.");
+    } else if (selectedItem.equals(Item.BARA_BRITH)) {
+      System.out.println("The taste of childhood rejuvenates you.");
+      // TODO increase player health by 50. 
+    } else if (selectedItem.equals(Item.TEXT_BOOK)) {
+      System.out.println("Our new found knowledge of Discrete Maths\n"
+          + "emboldens you.");
+      // TODO increase player experience by 75
+    } else if (selectedItem.equals(Item.SPEAR)) {
+      System.out.println("Can't use that here!");
+    } else if (selectedItem.equals(Item.PHONE)) {
+      System.out.println("You can call in some help.");
+     // TODO increase player experience by 100.
+     // TODO decrease gold by 10 if gold is more than 10.
+    } else {
+      throw new IllegalArgumentException("Invalid item!");
+    } 
+  }
+  
   /**
    * Retrieves the game map.
    *

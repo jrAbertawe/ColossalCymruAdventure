@@ -28,7 +28,7 @@ public enum Item {
    * @param item the string representation of the item.
    * @return the item type based on the input.
    */
-  public Item stringToItem(String item) {
+  public static Item stringToItem(String item) {
     if (item.equalsIgnoreCase("sword")) {
       return SWORD;
     } else if (item.equalsIgnoreCase("potion")) {
