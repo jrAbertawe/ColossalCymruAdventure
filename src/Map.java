@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 /**
  * This class describes a 10 by 10 map of areas.
  * @author jackroberts
@@ -16,6 +20,8 @@ public class Map {
 	public Map() {
 		//generateBlankMap(); - This is the basic Blank map that was created
 		// by jack
+
+		generateMap();
 	}
 	
 	/**
@@ -28,8 +34,32 @@ public class Map {
 		return grid[x][y].getDescription();
 	}
 
-	public void generateMap(){
+	public void generateMap() {
+		try (Scanner file = new Scanner(new File("world.txt"))) {
+			
+			grid = new Area[MAX_MAP_SIZE][MAX_MAP_SIZE]; //Map grid becomes 2D array of Areas.
 
+			//Iterate through map, adding new Area to each cell.
+			for (int i = 0; i < MAX_MAP_SIZE; i++) {
+				for (int j = 0; j < MAX_MAP_SIZE; j++) {
+
+					String[] s_line = file.nextLine().split("/");
+					String s_descString = s_line[0];
+					int s_level = Integer.parseInt(s_line[1]);
+					//Actor s_monster = s_line[2];
+					Actor s_monster = null;
+
+					//New blank Area gets added to every cell.
+					Area blankArea = new Area(s_descString, s_level, s_monster);
+					grid[i][j] = blankArea;
+				}
+			}
+
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	/**
