@@ -54,10 +54,9 @@ public class GameManager {
 
     // Game Loop until decision is reached to return to main menu.
     while (!returnToMainMenu) {
-
       // First step is to describe where the player is.
-      System.out
-          .println(getGameMap().getDescription(getPlayerX(), getPlayerY()));
+      System.out.println(getGameMap().getDescription(getPlayerX(), getPlayerY())
+          + " Area: " + "(" + getPlayerX() + "," + getPlayerY() + ")");
 
       // Get whether or not there is a monster at current location.
       Actor monsterAtLocation = getGameMap().getMonsterAt(getPlayerX(),
@@ -66,8 +65,10 @@ public class GameManager {
       // is
       // called.
       if (monsterAtLocation != null) {
-        System.out.println("There is a monster here."
-            + " I'd output its name if my code were finished.");
+        System.out.println("There is a monster here. The monster is named: "
+            + monsterAtLocation.getName());
+      } else {
+        
       }
 
       System.out.println("What now?\n"); // Prompt for user input.
