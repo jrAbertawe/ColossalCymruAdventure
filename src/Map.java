@@ -14,7 +14,8 @@ public class Map {
 	 * Constructor for Map(). Initialises a blank map, or a map loaded from file.
 	 */
 	public Map() {
-		generateBlankMap();
+		//generateBlankMap(); - This is the basic Blank map that was created
+		// by jack
 	}
 	
 	/**
@@ -25,6 +26,10 @@ public class Map {
 	 */
 	public String getDescription(int x, int y) {
 		return grid[x][y].getDescription();
+	}
+
+	public void generateMap(){
+
 	}
 	
 	/**
