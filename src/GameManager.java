@@ -78,18 +78,22 @@ public class GameManager {
       switch (actionChoice) {
         case "n":
           // TODO move north and update player location if valid move.
+        	
           System.out.println("WARNING - Feature Unimplemented");
           break;
         case "e":
           // TODO move east and update player location if valid move.
+        	
           System.out.println("WARNING - Feature Unimplemented");
           break;
         case "s":
           // TODO move south and update player location if valid move.
+        	
           System.out.println("WARNING - Feature Unimplemented");
           break;
         case "w":
           // TODO move west and update player location if valid move.
+        	
           System.out.println("WARNING - Feature Unimplemented");
           break;
         case "use":
@@ -241,7 +245,5 @@ public class GameManager {
     this.playerY = playerY;
   }
 }
-
-
 
 
