@@ -107,8 +107,9 @@ public class Map {
 	 * @param y The y coordinate of the desired area.
 	 * @return String description of specified area.
 	 */
+
 	public String getDescription(int x, int y) {
-		return grid[x][y].getDescription();
+			return grid[x][y].getDescription();
 	}
 	
 	/**
@@ -137,5 +138,4 @@ public class Map {
 	public Actor getMonsterAt(int x, int y) {
 		return grid[x][y].getMonster();
 	}
-
 }
