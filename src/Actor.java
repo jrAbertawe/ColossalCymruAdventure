@@ -59,7 +59,11 @@ public abstract class Actor {
             return health;
         }
 
-        private int calculateArmourClass(int level) {
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    private int calculateArmourClass(int level) {
         return Math.min(level / 2, 100);
         }
 }
@@ -153,13 +157,18 @@ public abstract class Actor {
         this.loot = generateRandomItem();
     }
 
-    private Item generateRandomItem() {
-        Random random = new Random();
-        Item item = new Item("Item name will go here " +
-                random.nextInt(100)); // This will need to be changed
-        // Depending on how many items we get
-        return item;
-    }
+        private Item generateRandomItem() {
+            Random random = new Random();
+            int itemTypeIndex = random.nextInt(6);
+            Item.ItemType[] itemTypes = Item.ItemType.values(); // Get all enum values
+            Item.ItemType randomItemType = itemTypes[itemTypeIndex]; // Get the random enum type
+
+            String itemName = "Item name will go here " + random.nextInt(100);
+            Item item = new Item(randomItemType); // Create an item with
+            // the random enum type
+            return item;
+        }
+
 
     public Item getLoot() {
         return loot;
