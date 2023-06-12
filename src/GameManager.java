@@ -15,6 +15,7 @@ public class GameManager {
 	public final static Map GAME_MAP = new Map(); //Create new map for entire game.
 	private static int playerX = 0; //Tracks x coord of player. player starts in top left
 	private static int playerY = 0; //tracks y coord of player. player starts in top left
+	public static Player player = new Player(0, "Jack"); //Creates the player character
 	
 	/**
 	 * Initialises a game and provides main gameplay loop.
@@ -100,8 +101,31 @@ public class GameManager {
 	 * Begins option to use items.
 	 */
 	private static void beginUse() {
-		System.out.println("WARNING - Feature Unimplemented");
-		//TODO Handle using items if the player has them.
+System.out.println("WARNING - Feature uncomplete");
+		
+		//Display user interface with player's inventory and numbered options to choose which item to use.
+		System.out.println("Choose the item you wish to use:");
+		int i = 0;
+		for (Item s : player.getInventory()) {
+			System.out.println(i + " - " + s.getName());
+			i++;
+		}
+		
+		Scanner useScanner = new Scanner(System.in); //initiate scanner to let user pick item to use
+		int itemChoice = useScanner.nextInt();		 //user input will select item
+		
+		Item chosenItem = player.getInventory().get(itemChoice); //get the item object from the inventory
+		
+		//call the use item method and pass in the player attributes
+		int[] stats = chosenItem.useItem(player.getGold(), player.getHealth(), player.getExperience());
+		
+		//update player attributes
+		player.setGold(stats[0]);
+		player.setHealth(stats[1]);
+		player.setExperience(stats[2]);
+		
+		useScanner.close();
+		
 	}
 	
 
