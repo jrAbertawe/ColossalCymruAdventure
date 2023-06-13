@@ -79,31 +79,6 @@ public class GameManager {
       
 
       String actionChoice = actionScanner.nextLine();
-
-      /*
-       *
-	   * 
-	   * Move:
-	   * 	Input: 
-	   * 			character direction is an element of {'n';'e';'s';'w'}
-	   * 			integer playerX given by the player’s x coordinate.
-	   *			integer playerY given by the player’s y coordinate.
-	   * 	
-	   *	Output:
-	   *			 
-	   * 			
-	   * 			
-	   * 			
-	   * 			
-	   * 			
-       */
-      /** Starting position for player on x axis. */
-      //public static final int PLAYER_STARTING_POS_X = 0;
-      /** Starting position for player on y axis. */
-      //public static final int PLAYER_STARTING_POS_Y = 0;
-      
-      // private int playerX; // Tracks x coord of player. player starts in top left
-      // private int playerY; // tracks y coord of player. player starts in top left
       
       // Switches based on user choice.
       switch (actionChoice) {
