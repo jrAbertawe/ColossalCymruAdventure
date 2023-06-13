@@ -22,8 +22,8 @@ public class GameManager {
   public static final int PLAYER_STARTING_POS_Y = 0;
 
   private Map gameMap; // Create new map for entire game.
-  private int playerX; // Tracks x coord of player. player starts in top left
-  private int playerY; // tracks y coord of player. player starts in top left
+  private int playerX = PLAYER_STARTING_POS_X; // Tracks x coord of player. player starts in top left
+  private int playerY = PLAYER_STARTING_POS_Y; // tracks y coord of player. player starts in top left
 
   /**
    * Creates a new game manager.
@@ -71,13 +71,17 @@ public class GameManager {
       }
 
       System.out.println("What now?\n"); // Prompt for user input.
+      System.out.println("Please type the direction you'd like to travel indicated in brackets below: ");
+      System.out.println("Move North? (n)");
+      System.out.println("Move East?  (e)");
+      System.out.println("Move South? (s)");
+      System.out.println("Move West?  (w)\n");
+      
 
       String actionChoice = actionScanner.nextLine();
 
       /*
-       * At the moment, GameManager does not handle movement. For example, if a player types ‘n’, they are
-	   * expected to move north into a new cell. This can only occur if the move is valid. If the move will place
-	   * them outside the confines of the map, it should be disallowed. This can be described thusly:
+       *
 	   * 
 	   * Move:
 	   * 	Input: 
@@ -86,39 +90,57 @@ public class GameManager {
 	   *			integer playerY given by the player’s y coordinate.
 	   * 	
 	   *	Output:
-	   *			DISALLOWED MOVES - 
-	   * 			String "Can’t go north!" if playerY ≤ 0 and direction = n
-	   * 			String "Can’t go south!" if 5 ≤ playerY and direction = s
-	   * 			String "Can’t go west!" if playerX ≤ 0 and direction = w
-	   * 			String "Can’t go east!" if 5 ≤ playerX and direction = e
-	   * 
-	   * 			ALLOWED MOVES - 
-	   * 			integer playerY − = 1 if 0 < playerY ≤ 5 and direction = n
-	   * 			integer playerY + = 1 if 0 ≤ playerY < 5 and direction = s
-	   * 			integer playerX− = 1 if 0 < playerX ≤ 5 and direction = w
-	   * 			integer playerX+ = 1 if 0 ≤ playerX < 5 and direction = e
-	   * 			Update GameManager to support this functionality. Alternative, implement this functionality in its own
-	   * 			class and call it from GameManager.
+	   *			 
+	   * 			
+	   * 			
+	   * 			
+	   * 			
+	   * 			
        */
+      /** Starting position for player on x axis. */
+      //public static final int PLAYER_STARTING_POS_X = 0;
+      /** Starting position for player on y axis. */
+      //public static final int PLAYER_STARTING_POS_Y = 0;
       
+      // private int playerX; // Tracks x coord of player. player starts in top left
+      // private int playerY; // tracks y coord of player. player starts in top left
       
       // Switches based on user choice.
       switch (actionChoice) {
         case "n":
-          // TODO move north and update player location if valid move.
-          System.out.println("WARNING - Feature Unimplemented");
+          // moves north and updates player location if valid move.
+        	if ((0 < playerY) && (5 <= playerY)) {
+        		playerY--;
+        	} else { 
+        		System.out.println("Can't go North!");	
+        	}
           break;
         case "e":
-          // TODO move east and update player location if valid move.
-          System.out.println("WARNING - Feature Unimplemented");
+          // moves east and updates player location if valid move.
+        	if ((0 <= playerX) && (5 > playerX)) {
+        		playerX++;
+        		System.out.println("You've moved a little bit East!");
+        	} else { 
+        		System.out.println("Can't go East!");	
+        	}
           break;
         case "s":
-          // TODO move south and update player location if valid move.
-          System.out.println("WARNING - Feature Unimplemented");
+          // moves south and updates player location if valid move.
+        	if ((0 <= playerY) && (5 > playerY)) {
+        		playerY++;
+        		System.out.println("You've moved a little bit South!");
+        	} else { 
+        		System.out.println("Can't go South!");	
+        	}
           break;
         case "w":
-          // TODO move west and update player location if valid move.
-          System.out.println("WARNING - Feature Unimplemented");
+          // moves west and updates player location if valid move.
+        	if ((0 < playerX) && (5 >= playerX)) {
+        		playerY--;
+        		System.out.println("You've moved a little bit West!");
+        	} else { 
+        		System.out.println("Can't go West!");	
+        	}
           break;
         case "use":
           // Handle player using an item.

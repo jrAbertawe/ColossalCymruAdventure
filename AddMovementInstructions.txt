@@ -1,23 +1,27 @@
 	  /*
-       * At the moment, GameManager does not handle movement. For example, if a player types ‘n’, they are
+      * At the moment, GameManager does not handle movement. For example, if a player types ‘n’, they are
 	   * expected to move north into a new cell. This can only occur if the move is valid. If the move will place
 	   * them outside the confines of the map, it should be disallowed. This can be described thusly:
-	   
+	   * 
 	   * Move:
 	   * 	Input: 
-	   * 			character direction 2 f0n0;0 e0;0 s0;0 w0g
+	   * 			character direction is an element of {'n';'e';'s';'w'}
 	   * 			integer playerX given by the player’s x coordinate.
 	   *			integer playerY given by the player’s y coordinate.
 	   * 	
 	   *	Output:
-	   * 			String \Can’t go north!" if playerY ≤ 0 and direction = n
-	   * 			String \Can’t go south!" if 5 ≤ playerY and direction = s
-	   * 			String \Can’t go west!" if playerX ≤ 0 and direction = w
-	   * 			String \Can’t go east!" if 5 ≤ playerX and direction = e
+	   *			INVALID MOVES - 
+	   * 			String "Can’t go north!" if playerY ≤ 0 and direction = n
+	   * 			String "Can’t go south!" if 5 ≤ playerY and direction = s
+	   * 			String "Can’t go west!" if playerX ≤ 0 and direction = w
+	   * 			String "Can’t go east!" if 5 ≤ playerX and direction = e
+	   * 
+	   * 			VALID MOVES - 
 	   * 			integer playerY − = 1 if 0 < playerY ≤ 5 and direction = n
 	   * 			integer playerY + = 1 if 0 ≤ playerY < 5 and direction = s
 	   * 			integer playerX− = 1 if 0 < playerX ≤ 5 and direction = w
 	   * 			integer playerX+ = 1 if 0 ≤ playerX < 5 and direction = e
+	   *
 	   * 			Update GameManager to support this functionality. Alternative, implement this functionality in its own
 	   * 			class and call it from GameManager.
        */
