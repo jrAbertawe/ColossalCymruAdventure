@@ -111,7 +111,7 @@ public class GameManager {
         case "w":
           // moves west and updates player location if valid move.
         	if ((0 < playerX) && (5 >= playerX)) {
-        		playerY--;
+        		playerX--;
         		System.out.println("You've moved a little bit West!");
         	} else { 
         		System.out.println("Can't go West!");	
