@@ -84,7 +84,7 @@ public class GameManager {
       switch (actionChoice.toLowerCase()) {
         case "n":
           // moves north and updates player location if valid move.
-        	if ((0 < playerY) && (5 <= playerY)) {
+        	if (0 < playerY && 5 >= playerY) {
         		playerY--;
         	} else { 
         		System.out.println("Can't go North!");	
@@ -92,7 +92,7 @@ public class GameManager {
           break;
         case "e":
           // moves east and updates player location if valid move.
-        	if ((0 <= playerX) && (5 > playerX)) {
+        	if (0 <= playerX && 4 > playerX) {
         		playerX++;
         		System.out.println("You've moved a little bit East!");
         	} else { 
@@ -101,7 +101,7 @@ public class GameManager {
           break;
         case "s":
           // moves south and updates player location if valid move.
-        	if ((0 <= playerY) && (5 > playerY)) {
+        	if (0 <= playerY && 4 > playerY) {
         		playerY++;
         		System.out.println("You've moved a little bit South!");
         	} else { 
@@ -110,7 +110,7 @@ public class GameManager {
           break;
         case "w":
           // moves west and updates player location if valid move.
-        	if ((0 < playerX) && (5 >= playerX)) {
+        	if (0 < playerX && 5 >= playerX) {
         		playerX--;
         		System.out.println("You've moved a little bit West!");
         	} else { 
