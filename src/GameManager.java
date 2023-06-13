@@ -81,7 +81,7 @@ public class GameManager {
       String actionChoice = actionScanner.nextLine();
       
       // Switches based on user choice.
-      switch (actionChoice) {
+      switch (actionChoice.toLowerCase()) {
         case "n":
           // moves north and updates player location if valid move.
         	if ((0 < playerY) && (5 <= playerY)) {
