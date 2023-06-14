@@ -64,14 +64,12 @@ public class Map {
 			if (mapLines.get(i)[0].length() > MAX_DESCRIPTION_LENGTH) {
 				throw new IllegalArgumentException("Error: (Line No. " + lineNo
 						+ ") Location description should be no longer than 300 characters.");
-			}
 			// Handle error if level provided is outside of the allowable boundaries
-			else if (Integer.parseInt(mapLines.get(i)[1]) < MIN_LEVEL_NO || Integer.parseInt(mapLines.get(i)[1]) > MAX_LEVEL_NO) {
+			} else if (Integer.parseInt(mapLines.get(i)[1]) < MIN_LEVEL_NO || Integer.parseInt(mapLines.get(i)[1]) > MAX_LEVEL_NO) {
 				throw new IllegalArgumentException("Error: (Line No. " + lineNo
 						+ ") Level must be between 0 and 100.");
-			}
 			// Handle error if monster name is longer than the maximum allowed length
-			else if (mapLines.get(i)[2].length() >= MAX_LENGTH_MONSTER_NAME) {
+			} else if (mapLines.get(i)[2].length() >= MAX_LENGTH_MONSTER_NAME) {
 				throw new IllegalArgumentException("Error: (Line No. " + lineNo
 						+ ") Monster name should be no longer than 100 characters.");
 			}
@@ -80,9 +78,8 @@ public class Map {
 			if (mapLines.get(i)[2].equals("null")) {
 				Area newArea = new Area(mapLines.get(i)[0],Integer.parseInt(mapLines.get(i)[1]),null);
 				grid[horizNum][vertNum] = newArea;
-			}
 			// Otherwise create an area with a monster
-			else {
+			} else {
 				Monster newMonster = new Monster(Integer.parseInt(mapLines.get(i)[1]),mapLines.get(i)[2]);
 				Area newArea = new Area(mapLines.get(i)[0],Integer.parseInt(mapLines.get(i)[1]),newMonster);
 				grid[horizNum][vertNum] = newArea;
@@ -91,9 +88,8 @@ public class Map {
 			//Increase vertical/horizontal numbers. If horizontal number less than max then increment
 			if (horizNum < (MAX_MAP_SIZE - 1)) {
 				horizNum++;
-			}
 			//If horizontal number at the maximum then set to 0 and increment vertical number
-			else {
+			} else {
 				horizNum = 0;
 				vertNum++;
 			}
@@ -137,5 +133,13 @@ public class Map {
 	 */
 	public Actor getMonsterAt(int x, int y) {
 		return grid[x][y].getMonster();
+	}
+	
+	/**
+	 * Provides the maximum size of the map
+	 * @return the constant variable MAX_MAP_SIZE
+	 */
+	public int getMaxMapSize () {
+		return MAX_MAP_SIZE;
 	}
 }
