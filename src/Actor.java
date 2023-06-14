@@ -65,7 +65,7 @@ public abstract class Actor {
 
 
     }
-    else if (this.armourClass > currentLevel/2 ) {
+    else if (this.armourClass > (currentLevel/2) ) {
       System.out.println("Incorrect Armour Class, please rectify before continuing");
       return;
     }
