@@ -12,7 +12,7 @@ import java.util.Scanner;
  * @author jackroberts
  *
  * @version 1.1
- * @modified 2023-06-10
+ * @modified 2023-06-15
  */
 public class GameManager {
 
@@ -22,6 +22,7 @@ public class GameManager {
   public static final int PLAYER_STARTING_POS_Y = 0;
 
   private Map gameMap; // Create new map for entire game.
+  private Player player;
   private int playerX; // Tracks x coord of player. player starts in top left
   private int playerY; // tracks y coord of player. player starts in top left
 
@@ -32,10 +33,11 @@ public class GameManager {
    *
    * @throws FileNotFoundException if file is not found.
    */
-  public GameManager() throws FileNotFoundException {
+  public GameManager(Player player) throws FileNotFoundException {
     setGameMap(new Map());
     this.setPlayerX(PLAYER_STARTING_POS_X);
     this.setPlayerY(PLAYER_STARTING_POS_Y);
+    this.player = player;
     beginGame();
   }
 
@@ -104,6 +106,10 @@ public class GameManager {
         case "attack":
           // Handle player attacking a monster.
           beginBattle();
+
+          if(player.currentHealth == 0) {
+            returnToMainMenu = true;
+          }
           break;
         case "quit":
           // Allow a user to return to main menu.
@@ -111,8 +117,7 @@ public class GameManager {
           break;
         default:
           // Handle unexpected inputs.
-          System.out
-              .println("I'm not sure what you're asking. Please rephrase.");
+          System.out.println("I'm not sure what you're asking. Please rephrase.");
       }
     }
     actionScanner.close();
@@ -126,14 +131,11 @@ public class GameManager {
    * @param gameMap the map for the game.
    */
   private void beginBattle() {
-
     if (gameMap.getMonsterAt(getPlayerX(), getPlayerY()) != null) {
-      // TODO call BattleManager.
-      System.out.println("WARNING - Feature Unimplemented");
-
+      BattleManager battleManager = new BattleManager(player, gameMap.getMonsterAt(getPlayerX(), getPlayerY()));
+      battleManager.engageBattle();
     } else {
       System.out.println("There's no monster to battle!");
-      System.out.println("WARNING - Feature Unimplemented");
     }
   }
 
