@@ -10,7 +10,7 @@
  * @modified 2023-06-10
  */
 public abstract class Actor {
-  private String name; // Name of actor.
+  protected String name; // Name of actor.
   protected int armourClass;
   protected int currentHealth;
   protected int currentLevel;
@@ -33,6 +33,28 @@ public abstract class Actor {
         this.armourClass = armourClass;
 
       }
+  }
+
+  public Actor(String name, int currentHealth, int currentlevel, int armourClass){
+      this.name = name;
+      this.currentHealth = 100;
+      this.currentLevel = 0;
+      if (this.armourClass < 0 ){
+        this.armourClass = 0;
+
+
+      }
+      else if (this.armourClass > currentLevel/2 ) {
+        System.out.println("Incorrect Armour Class, please rectify before continuing");
+        return;
+      }
+      else {
+        this.armourClass = armourClass;
+
+      }
+
+
+
   }
 
   public void setActorLevel (int newActorLevel){

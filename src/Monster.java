@@ -7,7 +7,7 @@ public class Monster extends Actor {
 
   public Monster(String name) {
     
-    super(name);
+    super(name,0,0,0);
     
 
            
@@ -17,6 +17,18 @@ public class Monster extends Actor {
       
       monsterItem = itemValues[randomIndex];
       
+  }
+
+
+  public void setMonsterHealth (int newMonsterHealth) {
+
+    this.currentHealth = newMonsterHealth;
+
+  }
+  public int getMonsterHealth (int newMonsterHealth) {
+
+    return this.currentHealth;
+
   }
 
 
