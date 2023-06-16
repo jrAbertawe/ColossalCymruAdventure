@@ -15,77 +15,39 @@ public abstract class Actor {
   protected int currentHealth;
   protected int currentLevel;
 
-  public Actor(String name, int armourClass){
-
-      this.name = name;
-      currentHealth = 100;
-      currentLevel = 0;
-      if (this.armourClass < 0 ){
-        this.armourClass = 0;
-
-
-      }
-      else if (this.armourClass > currentLevel/2 ) {
-        System.out.println("Incorrect Armour Class, please rectify before continuing");
-        return;
-      }
-      else {
-        this.armourClass = armourClass;
-
-      }
-  }
-
-  public Actor(String name, int currentHealth, int currentlevel, int armourClass){
+  public Actor(String name, int currentHealth, int currentLevel, int armourClass){
       this.name = name;
       this.currentHealth = 100;
-      this.currentLevel = 0;
-      if (this.armourClass < 0 ){
-        this.armourClass = 0;
+      this.currentLevel = currentLevel;
 
-
-      }
-      else if (this.armourClass > currentLevel/2 ) {
+      if (this.armourClass > currentLevel/2 ) {
         System.out.println("Incorrect Armour Class, please rectify before continuing");
-        return;
       }
       else {
         this.armourClass = armourClass;
-
       }
-
-
-
   }
 
   public void setActorLevel (int newActorLevel){
-
     newActorLevel = currentLevel;
-
-
   }
 
   public int currentActorLevel (){
-
     return this.currentLevel;
-  
   }
 
   public void setActorHealth (int newActorHealth){
-
     newActorHealth = currentHealth;
   }
 
   public int currentActorHealth(){
     return currentHealth;
-
   }
 
   public void newArmourClass (int newArmourLevel){
 
     if (newArmourLevel < 0 ){
       newArmourLevel = 0;
-
-
     }
     else if (this.armourClass > (currentLevel/2) ) {
       System.out.println("Incorrect Armour Class, please rectify before continuing");
@@ -93,7 +55,6 @@ public abstract class Actor {
     }
     else {
       newArmourLevel = armourClass;
-
     }
   }
 

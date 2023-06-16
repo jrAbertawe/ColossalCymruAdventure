@@ -3,16 +3,14 @@ import java.util.List;
 
 public class Player extends Actor {
     
-  protected int level;
-  protected int experience;
-  protected int gold;
+  private int experience;
+  private int gold;
   private List<Item> inventory;
   private Item currentWeapon;
     
-    public Player(String name) {
+    public Player(String name, int level, int armourClass) {
 
-      super(name,0,0,0);
-      this.level = 0;
+      super(name, 100, level, armourClass);
       this.experience = 0;
       this.gold = 0;
       this.inventory = new ArrayList<>();
@@ -21,21 +19,21 @@ public class Player extends Actor {
 
     
     public void levelUp() {
-        if (level < 100 && experience > 3 * (level * 0.1) + 10) {
-            level++;
-            System.out.println("Congratulations! You leveled up to level " + level);
-        } else if (level == 100) {
+        if (currentLevel < 100 && experience > 3 * (currentLevel * 0.1) + 10) {
+            currentLevel++;
+            System.out.println("Congratulations! You leveled up to level " + currentLevel);
+        } else if (currentLevel == 100) {
             gold += 100;
             System.out.println("Congratulations! You reached the maximum level. You received 100 gold.");
         }
     }
 
      public void getExperience(int gainedXP) {
-        if (level < 100) {
+        if (currentLevel < 100) {
             experience += gainedXP;
             System.out.println("You gained " + gainedXP + " experience points.");
 
-            if (experience > 3 * (level * 0.1) + 10) {
+            if (experience > 3 * (currentLevel * 0.1) + 10) {
                 levelUp();
             }
         } else {
@@ -93,9 +91,6 @@ public void addGold(int Gold){
     this.gold = this.gold + Gold;
 
   }
-
-
-
 }
 
 public void removeGold(int Gold){
@@ -108,9 +103,6 @@ public void removeGold(int Gold){
     this.gold = this.gold - Gold;
 
   }
-
-
-
 }
 
    public void equipWeapon(String itemName) {
@@ -131,6 +123,4 @@ public void removeGold(int Gold){
             System.out.println("No weapon equipped.");
         }
     }
-
-      
 }

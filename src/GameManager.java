@@ -12,7 +12,7 @@ import java.util.Scanner;
  * @author jackroberts
  *
  * @version 1.1
- * @modified 2023-06-10
+ * @modified 2023-06-15
  */
 public class GameManager {
 
@@ -22,6 +22,7 @@ public class GameManager {
   public static final int PLAYER_STARTING_POS_Y = 0;
 
   private Map gameMap; // Create new map for entire game.
+  private Player player;
   private int playerX; // Tracks x coord of player. player starts in top left
   private int playerY; // tracks y coord of player. player starts in top left
 
@@ -32,10 +33,11 @@ public class GameManager {
    *
    * @throws FileNotFoundException if file is not found.
    */
-  public GameManager() throws FileNotFoundException {
+  public GameManager(Player player) throws FileNotFoundException {
     setGameMap(new Map());
     this.setPlayerX(PLAYER_STARTING_POS_X);
     this.setPlayerY(PLAYER_STARTING_POS_Y);
+    this.player = player;
     beginGame();
   }
 
@@ -72,30 +74,51 @@ public class GameManager {
       }
 
       System.out.println("What now?\n"); // Prompt for user input.
+      System.out.println("Please type the direction you'd like to travel indicated in brackets below: ");
+      System.out.println("Move North? (n)");
+      System.out.println("Move East?  (e)");
+      System.out.println("Move South? (s)");
+      System.out.println("Move West?  (w)\n");
+      
 
       String actionChoice = actionScanner.nextLine();
-
+      
       // Switches based on user choice.
-      switch (actionChoice) {
+      switch (actionChoice.toLowerCase()) {
         case "n":
-          // TODO move north and update player location if valid move.
-        	
-          System.out.println("WARNING - Feature Unimplemented");
+          // moves north and updates player location if valid move.
+        	if (0 < playerY && 5 >= playerY) {
+        		playerY--;
+        	} else { 
+        		System.out.println("Can't go North!");	
+        	}
           break;
         case "e":
-          // TODO move east and update player location if valid move.
-        	
-          System.out.println("WARNING - Feature Unimplemented");
+          // moves east and updates player location if valid move.
+        	if (0 <= playerX && 4 > playerX) {
+        		playerX++;
+        		System.out.println("You've moved a little bit East!");
+        	} else { 
+        		System.out.println("Can't go East!");	
+        	}
           break;
         case "s":
-          // TODO move south and update player location if valid move.
-        	
-          System.out.println("WARNING - Feature Unimplemented");
+          // moves south and updates player location if valid move.
+        	if (0 <= playerY && 4 > playerY) {
+        		playerY++;
+        		System.out.println("You've moved a little bit South!");
+        	} else { 
+        		System.out.println("Can't go South!");	
+        	}
           break;
         case "w":
-          // TODO move west and update player location if valid move.
-        	
-          System.out.println("WARNING - Feature Unimplemented");
+          // moves west and updates player location if valid move.
+        	if (0 < playerX && 5 >= playerX) {
+        		playerX--;
+        		System.out.println("You've moved a little bit West!");
+        	} else { 
+        		System.out.println("Can't go West!");	
+        	}
           break;
         case "use":
           // Handle player using an item.
@@ -104,6 +127,10 @@ public class GameManager {
         case "attack":
           // Handle player attacking a monster.
           beginBattle();
+
+          if(player.currentHealth == 0) {
+            returnToMainMenu = true;
+          }
           break;
         case "quit":
           // Allow a user to return to main menu.
@@ -111,8 +138,7 @@ public class GameManager {
           break;
         default:
           // Handle unexpected inputs.
-          System.out
-              .println("I'm not sure what you're asking. Please rephrase.");
+          System.out.println("I'm not sure what you're asking. Please rephrase.");
       }
     }
     actionScanner.close();
@@ -126,14 +152,11 @@ public class GameManager {
    * @param gameMap the map for the game.
    */
   private void beginBattle() {
-
     if (gameMap.getMonsterAt(getPlayerX(), getPlayerY()) != null) {
-      // TODO call BattleManager.
-      System.out.println("WARNING - Feature Unimplemented");
-
+      BattleManager battleManager = new BattleManager(player, gameMap.getMonsterAt(getPlayerX(), getPlayerY()));
+      battleManager.engageBattle();
     } else {
       System.out.println("There's no monster to battle!");
-      System.out.println("WARNING - Feature Unimplemented");
     }
   }
 
