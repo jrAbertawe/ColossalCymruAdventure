@@ -96,7 +96,9 @@ public class Area {
    * @throws IllegalArgumentException if monster name is invalid.
    */
   public void setMonster(Actor monster) {
-    if (monster.getName().length() <= MONSTER_NAME_MAX
+    if (monster == null) {
+      this.monster = null;
+    } else if (monster.getName().length() <= MONSTER_NAME_MAX
         && monster.getName().length() >= MONSTER_NAME_MIN) {
       this.monster = monster;
     } else {

@@ -10,7 +10,62 @@
  * @modified 2023-06-10
  */
 public abstract class Actor {
-  private String name; // Name of actor.
+  protected String name; // Name of actor.
+  protected int armourClass;
+  protected int currentHealth;
+  protected int currentLevel;
+
+  public Actor(String name, int currentHealth, int currentLevel, int armourClass){
+      this.name = name;
+      this.currentHealth = 100;
+      this.currentLevel = currentLevel;
+
+      if (this.armourClass > currentLevel/2 ) {
+        System.out.println("Incorrect Armour Class, please rectify before continuing");
+      }
+      else {
+        this.armourClass = armourClass;
+      }
+  }
+
+  public void setActorLevel (int newActorLevel){
+    newActorLevel = currentLevel;
+  }
+
+  public int currentActorLevel (){
+    return this.currentLevel;
+  }
+
+  public void setActorHealth (int newActorHealth){
+    newActorHealth = currentHealth;
+  }
+
+  public int currentActorHealth(){
+    return currentHealth;
+  }
+
+  public void newArmourClass (int newArmourLevel){
+
+    if (newArmourLevel < 0 ){
+      newArmourLevel = 0;
+    }
+    else if (this.armourClass > (currentLevel/2) ) {
+      System.out.println("Incorrect Armour Class, please rectify before continuing");
+      return;
+    }
+    else {
+      newArmourLevel = armourClass;
+    }
+  }
+
+
+
+
+
+
+
+
+
 
   /**
    * Constructs an Actor object with the given name.

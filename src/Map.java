@@ -54,7 +54,7 @@ public class Map {
    * Initialises the map.
    * 
    * <p>Side-effect changes the grid.
-   * 
+   *
    * @param gameMap the file that holds the map.
    * @throws FileNotFoundException if file is not found.
    */
@@ -68,15 +68,32 @@ public class Map {
     while (mapReader.hasNext()) {
       String description = mapReader.next(); // Reads the maps description.
       int level = Integer.parseInt(mapReader.next()); // Reads the maps level.
-      // Reads the maps actor.
-      Actor actor = new Monster(mapReader.nextLine().replace("/", "")); 
-      Area area = new Area(description, level, actor); // Creates new area.
+      // Reads the monsters name.
+      String monsterName = mapReader.nextLine().replace("/", "");
+      Actor monster = scanMonsterName(monsterName); // Checks for null monster.
+      Area area = new Area(description, level, monster); // Creates new area.
       int row = lineNo % MAX_MAP_SIZE_HOR; // Calculation for map row.
       int col = lineNo / MAX_MAP_SIZE_VER; // Calculation for map column.
       grid[row][col] = area; // Adds the area to the grid.
       lineNo++;
     }
     mapReader.close(); // Closes the scanner.
+  }
+  
+  /**
+   * Checks if a is in an area and returns it's name.
+   * 
+   * @param name the name of the monster.
+   * @return the name of the monster if it has a name, null otherwise. 
+   */
+  private Actor scanMonsterName(String name) {
+    // Checks if the monsters name is equal to null
+    if (name.equalsIgnoreCase("null")) {
+      return null;
+    } else {
+      // Returns the monsters name if it's not null. 
+      return new Monster(name);
+    }
   }
 
   /**
