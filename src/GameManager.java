@@ -46,20 +46,20 @@ public class GameManager {
 			//Switches based on user choice.
 			switch (actionChoice) {
 				case "n":
-					//TODO move north and update player location if valid move.
-					System.out.println("WARNING - Feature Unimplemented");
+					playerY = MovementManager.movePlayer(playerY, actionChoice);
+					System.out.println("NORTH ACTION: PlayerY Coordinate: " + playerY);
 					break;
 				case "e":
-					//TODO move east and update player location if valid move.
-					System.out.println("WARNING - Feature Unimplemented");
+					playerX = MovementManager.movePlayer(playerX, actionChoice);
+					System.out.println("EAST ACTION: PlayerX Coordinate: " + playerX);
 					break;
 				case "s":
-					//TODO move south and update player location if valid move.
-					System.out.println("WARNING - Feature Unimplemented");
+					playerY = MovementManager.movePlayer(playerY, actionChoice);
+					System.out.println("SOUTH ACTION: PlayerY Coordinate: " + playerY);
 					break;
 				case "w":
-					//TODO move west and update player location if valid move.
-					System.out.println("WARNING - Feature Unimplemented");
+					playerX = MovementManager.movePlayer(playerX, actionChoice);
+					System.out.println("WEST ACTION: PlayerX Coordinate: " + playerX);
 					break;
 				case "use":
 					//Handle player using an item.

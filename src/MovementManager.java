@@ -7,22 +7,24 @@
  * @author Stuart Gadd
  * @version 0.1 - Initial draft of Movement method
  * @version 0.2 - Added error checking, constant variables and renamed class to be in-line with project naming convention
+ * @version 0.3 - Changed movePlayer and constant variables to static as there is no need to create a MovementManager object.
  * @since 2023/06/16
  * 
  */
 public class MovementManager {
 
-	private final int MIN_COORDINATE = 0;
-	private final int MAX_COORDINATE = 4;
+	private static final int MIN_COORDINATE = 0;
+	private static final int MAX_COORDINATE = 4;
 	
-    // Default constructor
+    //Default constructor
 	public MovementManager() {
 	}
 	
-	public int movePlayer(int coordinate, char direction) {
+	//Method declaration
+	public static int movePlayer(int coordinate, String direction) {
 			
 		switch (direction) {
-			case 'n':	
+			case "n":	
 				if (coordinate <= MIN_COORDINATE) {
 					System.out.println("Can't go north!");
 				} else if (coordinate > MAX_COORDINATE){
@@ -33,7 +35,7 @@ public class MovementManager {
 					coordinate--;
 				}
 				break;
-			case 's':
+			case "s":
 				if (coordinate >= MAX_COORDINATE) {
 					System.out.println("Can't go south!");
 				} else if (coordinate < MIN_COORDINATE){
@@ -44,7 +46,7 @@ public class MovementManager {
 					coordinate++;
 				}
 				break;
-			case 'w':
+			case "w":
 				if (coordinate <= MIN_COORDINATE) {
 					System.out.println("Can't go west!");
 				} else if (coordinate > MAX_COORDINATE){
@@ -55,7 +57,7 @@ public class MovementManager {
 					coordinate--;
 				}
 				break;
-			case 'e':
+			case "e":
 				if (coordinate >= MAX_COORDINATE) {
 					System.out.println("Can't go east!");
 				} else if (coordinate < MIN_COORDINATE){
