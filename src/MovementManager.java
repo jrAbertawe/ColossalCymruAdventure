@@ -47,7 +47,7 @@ public class MovementManager {
 			case "n":
 				//Check if player is at the boundary of the game grid.
 				if (coordinate <= MIN_COORDINATE) {
-					System.out.println("Can't go north!");
+					System.out.println("Can't go north!\n");
 				//Check if player is beyond the boundary of the game grid.
 				} else if (coordinate > MAX_COORDINATE){
 					System.out.println("FATAL ERROR DURING MOVING NORTH ACTION: Player is outside boundary of game!!! PlayerY coordinate is " + coordinate);
@@ -61,7 +61,7 @@ public class MovementManager {
 			case "s":
 				//Check if player is at the boundary of the game grid.
 				if (coordinate >= MAX_COORDINATE) {
-					System.out.println("Can't go south!");
+					System.out.println("Can't go south!\n");
 				//Check if player is beyond the boundary of the game grid.
 				} else if (coordinate < MIN_COORDINATE){
 					System.out.println("FATAL ERROR DURING MOVING SOUTH ACTION: Player is outside boundary of game!!! PlayerY coordinate is " + coordinate);
@@ -75,7 +75,7 @@ public class MovementManager {
 			case "w":
 				//Check if player is at the boundary of the game grid.
 				if (coordinate <= MIN_COORDINATE) {
-					System.out.println("Can't go west!");
+					System.out.println("Can't go west!\n");
 				//Check if player is beyond the boundary of the game grid.
 				} else if (coordinate > MAX_COORDINATE){
 					System.out.println("FATAL ERROR DURING MOVING WEST ACTION: Player is outside boundary of game!!! PlayerX coordinate is " + coordinate);
@@ -89,7 +89,7 @@ public class MovementManager {
 			case "e":
 				//Check if player is at the boundary of the game grid.
 				if (coordinate >= MAX_COORDINATE) {
-					System.out.println("Can't go east!");
+					System.out.println("Can't go east!\n");
 				//Check if player is beyond the boundary of the game grid.
 				} else if (coordinate < MIN_COORDINATE){
 					System.out.println("FATAL ERROR DURING MOVING EAST ACTION: Player is outside boundary of game!!! PlayerX coordinate is " + coordinate);
