@@ -1,3 +1,4 @@
+
 /**
  * This file describes a 10 by 10 map of areas.
  */
@@ -5,6 +6,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+
 /**
  * This class describes a 10 by 10 map of areas.
  *
@@ -24,7 +26,7 @@ public class Map {
   public static final int MAX_MAP_SIZE_HOR = 5;
   /** Maximum allowed vert size of map. */
   public static final int MAX_MAP_SIZE_VER = 5;
-  
+
   private Area[][] grid; // 2D array representing 2D grid of cells.
 
   /**
@@ -40,6 +42,8 @@ public class Map {
 
   /**
    * Provides a description of the area at given coordinates.
+   * 
+   * <p>Side-effect free. Not referentially transparent.
    *
    * @param x The x coordinate of the desired area.
    *
@@ -62,7 +66,7 @@ public class Map {
     Scanner mapReader = new Scanner(GAME_MAP_FILE);
     mapReader.useDelimiter("/");
     // Map grid becomes 2D array of Areas.
-    grid = new Area[MAX_MAP_SIZE_HOR][MAX_MAP_SIZE_VER]; 
+    grid = new Area[MAX_MAP_SIZE_HOR][MAX_MAP_SIZE_VER];
     int lineNo = 0;
     // Iterate through map, adding new Area to each cell.
     while (mapReader.hasNext()) {
@@ -79,19 +83,21 @@ public class Map {
     }
     mapReader.close(); // Closes the scanner.
   }
-  
+
   /**
    * Checks if a is in an area and returns it's name.
    * 
+   * <p>Side-effect free. Not referentially transparent.
+   * 
    * @param name the name of the monster.
-   * @return the name of the monster if it has a name, null otherwise. 
+   * @return the name of the monster if it has a name, null otherwise.
    */
   private Actor scanMonsterName(String name) {
     // Checks if the monsters name is equal to null
     if (name.equalsIgnoreCase("null")) {
       return null;
     } else {
-      // Returns the monsters name if it's not null. 
+      // Returns the monsters name if it's not null.
       return new Monster(name);
     }
   }

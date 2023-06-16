@@ -34,10 +34,10 @@ public class Main {
     Scanner menuScanner = new Scanner(System.in); // Reads user input.
     boolean menuDecision = true; // Establish game exit point.
 
-    // Game Loop until decision is reached to quit the game.
+    // Creates new player.
     Player player = new Player("Player 1", 15, 10);
-
-    while (menuDecision && player.currentHealth != 0) {
+    // Game Loop until decision is reached to quit the game.
+    while (menuDecision && player.getCurrentHealth() != 0) {
       System.out.println("Do you want to:");
       System.out.println("make a (new) game");
       System.out.println("(quit) to desktop");
@@ -48,15 +48,18 @@ public class Main {
       // Handles choice of menu input. Switch chosen to allow for expansion.
       switch (menuChoice) {
         case "new":
-          GameManager game = new GameManager(player); // Hand control to GameManager.
+          // Hand control to GameManager.
+          GameManager game = new GameManager(player);
           break;
         case "quit":
-          System.out.println("Thank you for playing " + GAME_NAME + ". Hwyl fawr!");
+          System.out
+              .println("Thank you for playing " + GAME_NAME + ". Hwyl fawr!");
           menuDecision = false; // Exit game loop
           break;
         default:
           // Default to handle undefined menu options from user.
-          System.out.println("I'm not sure what you're asking. Please rephrase.");
+          System.out
+              .println("I'm not sure what you're asking. Please rephrase.");
       }
     }
     menuScanner.close();
