@@ -87,7 +87,7 @@ public class GameManager {
       switch (actionChoice.toLowerCase()) {
         case "n":
           // moves north and updates player location if valid move.
-        	if (0 < playerY && 5 >= playerY) {
+        	if ((0 < playerY) && (5 >= playerY)) {
         		playerY--;
         	} else { 
         		System.out.println("Can't go North!");	
@@ -95,7 +95,7 @@ public class GameManager {
           break;
         case "e":
           // moves east and updates player location if valid move.
-        	if (0 <= playerX && 4 > playerX) {
+        	if ((0 <= playerX) && (4 > playerX)) {
         		playerX++;
         		System.out.println("You've moved a little bit East!");
         	} else { 
@@ -104,7 +104,7 @@ public class GameManager {
           break;
         case "s":
           // moves south and updates player location if valid move.
-        	if (0 <= playerY && 4 > playerY) {
+        	if ((0 <= playerY) && (4 > playerY)) {
         		playerY++;
         		System.out.println("You've moved a little bit South!");
         	} else { 
@@ -169,7 +169,7 @@ public class GameManager {
     Scanner itemScanner = new Scanner(System.in);
     System.out.println("Enter item to use: ");
     String item = itemScanner.nextLine();
-    Item selectedItem = Item.stringToItem(item);
+    ItemType selectedItem = ItemType.stringToItem(item);
     processItem(selectedItem);
   }
   
@@ -181,20 +181,20 @@ public class GameManager {
    * 
    * @param selectedItem the item selected by the player.
    */
-  public static void processItem(Item selectedItem) {
-    if (selectedItem.equals(Item.SWORD) || selectedItem.equals(Item.SPEAR)) {
+  public static void processItem(ItemType selectedItem) {
+    if (selectedItem.equals(ItemType.SWORD) || selectedItem.equals(ItemType.SPEAR)) {
       System.out.println("Can't use that here!");
-    } else if (selectedItem.equals(Item.POTION)) {
+    } else if (selectedItem.equals(ItemType.POTION)) {
       // TODO increase player health by 20.
       System.out.println("You take a swig of potion.");
-    } else if (selectedItem.equals(Item.BARA_BRITH)) {
+    } else if (selectedItem.equals(ItemType.BARA_BRITH)) {
       System.out.println("The taste of childhood rejuvenates you.");
       // TODO increase player health by 50.
-    } else if (selectedItem.equals(Item.TEXT_BOOK)) {
+    } else if (selectedItem.equals(ItemType.TEXT_BOOK)) {
       System.out.println(
           "Our new found knowledge of Discrete Maths\n" + "emboldens you.");
       // TODO increase player experience by 75
-    } else if (selectedItem.equals(Item.PHONE)) {
+    } else if (selectedItem.equals(ItemType.PHONE)) {
       System.out.println("You can call in some help.");
       // TODO increase player experience by 100.
       // TODO decrease gold by 10 if gold is more than 10.

@@ -1,51 +1,42 @@
 /**
- * This file describes a collectible item rewarded after every battle.
+ * The Item file represents an item with a specific type.
  */
 /**
- * This enum describes a collectible item rewarded after every battle.
- * 
- * @author jackroberts
- *
- * @version 1.1
- * @modified 2023-06-10
+ * The Item class represents an item with a specific type.
  */
-public enum Item {
-  /** The sword item type. */
-  SWORD,
-  /** The potion item type. */
-  POTION,
-  /** The bara brith item type. */
-  BARA_BRITH,
-  /** The text book item type. */
-  TEXT_BOOK,
-  /** The spear item type. */
-  SPEAR,
-  /** The phone item type. */
-  PHONE,
-  /** Invalid item */
-  INVALID;
+public class Item {
+	private ItemType type;
 
-  /**
-   * Returns the corresponding item type based off of the input. 
-   * 
-   * @param item the string representation of the item.
-   * @return the item type based on the input.
-   */
-  public static Item stringToItem(String item) {
-    if (item.equalsIgnoreCase("sword")) {
-      return SWORD;
-    } else if (item.equalsIgnoreCase("potion")) {
-      return POTION;
-    } else if (item.equalsIgnoreCase("bara brith")) {
-      return BARA_BRITH;
-    } else if (item.equalsIgnoreCase("text book")) {
-      return TEXT_BOOK;
-    } else if (item.equalsIgnoreCase("spear")) {
-      return SPEAR;
-    } else if (item.equalsIgnoreCase("phone")) {
-      return PHONE;
-    } else {
-      return INVALID;
-    }
-  }
+	/**
+	 * Constructs a new Item object with the specified type.
+	 * 
+	 * <p>Side-effect sets the item type.
+	 * 
+	 * @param type the type of the item
+	 */
+	public Item(ItemType type) {
+		this.type = type;
+	}
+
+	/**
+	 * Returns the type of the item.
+	 * 
+	 * <p>Side-effect free. Not referentially transparent. 
+	 * 
+	 * @return the type of the item
+	 */
+	public ItemType getType() {
+		return type;
+	}
+
+	/**
+	 * Sets the type of the item.
+	 * 
+	 * <p>Side-effect sets the item type.
+	 * 
+	 * @param type the type of the item
+	 */
+	public void setType(ItemType type) {
+		this.type = type;
+	}
 }
