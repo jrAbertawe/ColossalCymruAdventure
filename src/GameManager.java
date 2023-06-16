@@ -46,20 +46,24 @@ public class GameManager {
 			//Switches based on user choice.
 			switch (actionChoice) {
 				case "n":
+					//Call to update coordinate of player if a valid move, otherwise
+					//display invalid move message.
 					playerY = MovementManager.movePlayer(playerY, actionChoice);
-					System.out.println("NORTH ACTION: PlayerY Coordinate: " + playerY);
 					break;
 				case "e":
+					//Call to update coordinate of player if a valid move, otherwise
+					//display invalid move message.
 					playerX = MovementManager.movePlayer(playerX, actionChoice);
-					System.out.println("EAST ACTION: PlayerX Coordinate: " + playerX);
 					break;
 				case "s":
+					//Call to update coordinate of player if a valid move, otherwise
+					//display invalid move message.
 					playerY = MovementManager.movePlayer(playerY, actionChoice);
-					System.out.println("SOUTH ACTION: PlayerY Coordinate: " + playerY);
 					break;
 				case "w":
+					//Call to update coordinate of player if a valid move, otherwise
+					//display invalid move message.
 					playerX = MovementManager.movePlayer(playerX, actionChoice);
-					System.out.println("WEST ACTION: PlayerX Coordinate: " + playerX);
 					break;
 				case "use":
 					//Handle player using an item.
