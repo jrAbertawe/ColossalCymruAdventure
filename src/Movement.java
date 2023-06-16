@@ -27,7 +27,7 @@ public class Movement {
 				}
 				break;
 			case 's':
-				if (coordinate >= 5) {
+				if (coordinate >= 4) {
 					System.out.println("Can't go south!");
 				} else {
 					System.out.println("You have gone south.");
@@ -43,7 +43,7 @@ public class Movement {
 				}
 				break;
 			case 'e':
-				if (coordinate >= 5) {
+				if (coordinate >= 4) {
 					System.out.println("Can't go east!");
 				} else {
 					System.out.println("You have gone east.");
