@@ -11,8 +11,11 @@ import java.util.Scanner;
  *
  * @author jackroberts
  *
+ * @modifiedBy Zac Healy
+ * @modifiedBy Sarah Ramsey
+ * 
  * @version 1.1
- * @modified 2023-06-15
+ * @modified 2023-06-16
  */
 public class GameManager {
 
@@ -20,11 +23,21 @@ public class GameManager {
   public static final int PLAYER_STARTING_POS_X = 0;
   /** Starting position for player on y axis. */
   public static final int PLAYER_STARTING_POS_Y = 0;
+  /** Health increase after drinking a potion. */
+  public static final int HEALTH_INCREASE_POTION = 20;
+  /** Health increase after eating bara brith. */
+  public static final int HEALTH_INCREASE_BARA_BRITH = 50;
+  /** Experience increase after reading a text book. */
+  public static final int XP_INCREASE_TEXT_BOOK = 75;
+  /** Experience increase after using a phone. */
+  public static final int XP_INCREASE_PHONE = 100;
+  /** Gold decrease after using a phone. */
+  public static final int GOLD_DECREASE_PHONE = 10;
 
   private Map gameMap; // Create new map for entire game.
-  private Player player;
+  private Player player; // The player in the game.
   private int playerX; // Tracks x coord of player. player starts in top left
-  private int playerY; // tracks y coord of player. player starts in top left
+  private int playerY; // Tracks y coord of player. player starts in top left
 
   /**
    * Creates a new game manager.
@@ -37,7 +50,7 @@ public class GameManager {
     setGameMap(new Map());
     this.setPlayerX(PLAYER_STARTING_POS_X);
     this.setPlayerY(PLAYER_STARTING_POS_Y);
-    this.player = player;
+    this.setPlayer(player); 
     beginGame();
   }
 
@@ -57,15 +70,11 @@ public class GameManager {
     // Game Loop until decision is reached to return to main menu.
     while (!returnToMainMenu) {
       // First step is to describe where the player is.
-      System.out.println(getGameMap().getDescription(getPlayerX(), getPlayerY())
-          + " Area: " + "(" + getPlayerX() + "," + getPlayerY() + ")");
-
+      System.out.println(getGameMap().getDescription(getPlayerX(), getPlayerY()));
       // Get whether or not there is a monster at current location.
       Actor monsterAtLocation = getGameMap().getMonsterAt(getPlayerX(),
           getPlayerY());
-      // If there is a monster present, inform the player as to what the monster
-      // is
-      // called.
+      // If monster present, inform the player as to what the monster is called.
       if (monsterAtLocation != null) {
         System.out.println("There is a monster here. The monster is named: "
             + monsterAtLocation.getName());
@@ -86,7 +95,7 @@ public class GameManager {
       // Switches based on user choice.
       switch (actionChoice.toLowerCase()) {
         case "n":
-          // moves north and updates player location if valid move.
+          // Moves north and updates player location if valid move.
         	if ((0 < playerY) && (5 >= playerY)) {
         		playerY--;
         	} else { 
@@ -94,7 +103,7 @@ public class GameManager {
         	}
           break;
         case "e":
-          // moves east and updates player location if valid move.
+          // Moves east and updates player location if valid move.
         	if ((0 <= playerX) && (4 > playerX)) {
         		playerX++;
         		System.out.println("You've moved a little bit East!");
@@ -103,7 +112,7 @@ public class GameManager {
         	}
           break;
         case "s":
-          // moves south and updates player location if valid move.
+          // Moves south and updates player location if valid move.
         	if ((0 <= playerY) && (4 > playerY)) {
         		playerY++;
         		System.out.println("You've moved a little bit South!");
@@ -112,7 +121,7 @@ public class GameManager {
         	}
           break;
         case "w":
-          // moves west and updates player location if valid move.
+          // Moves west and updates player location if valid move.
         	if (0 < playerX && 5 >= playerX) {
         		playerX--;
         		System.out.println("You've moved a little bit West!");
@@ -127,8 +136,7 @@ public class GameManager {
         case "attack":
           // Handle player attacking a monster.
           beginBattle();
-
-          if(player.currentHealth == 0) {
+          if(player.getCurrentHealth() == 0) {
             returnToMainMenu = true;
           }
           break;
@@ -165,7 +173,7 @@ public class GameManager {
    * 
    * <p>Side-effect free.
    */
-  private static void beginUse() {
+  private void beginUse() {
     Scanner itemScanner = new Scanner(System.in);
     System.out.println("Enter item to use: ");
     String item = itemScanner.nextLine();
@@ -173,34 +181,67 @@ public class GameManager {
     processItem(selectedItem);
   }
   
+	/**
+	 * Processes the item selected by the player.
+	 * 
+	 * <p>Side-effect Changes the players health, experience, or gold depending on
+	 * input.
+	 * 
+	 * @param selectedItem the item selected by the player.
+	 */
+	private void processItem(ItemType selectedItem) {
+		// Process the item the player is using.
+		if (selectedItem.equals(ItemType.SWORD) || selectedItem.equals(ItemType.SPEAR)) {
+			// Process a sword or spear item.
+			System.out.println("Can't use that here!");
+
+		} else if (selectedItem.equals(ItemType.POTION)) {
+			// Process a potion item.
+			player.setCurrentHealth(player.getCurrentHealth() + HEALTH_INCREASE_POTION);
+			System.out.println("You take a swig of potion.");
+
+		} else if (selectedItem.equals(ItemType.BARA_BRITH)) {
+			// Process a bara brith item.
+			player.setCurrentHealth(player.getCurrentHealth() + HEALTH_INCREASE_BARA_BRITH);
+			System.out.println("The taste of childhood rejuvenates you.");
+
+		} else if (selectedItem.equals(ItemType.TEXT_BOOK)) {
+			// Process a text book item.
+			player.setExperience(player.getExperience() + XP_INCREASE_TEXT_BOOK);
+			System.out.println("Our new found knowledge of Discrete Maths\n" + "emboldens you.");
+
+		} else if (selectedItem.equals(ItemType.PHONE)) {
+			// Process a phone item.
+			System.out.println("You can call in some help.");
+			player.setExperience(player.getExperience() + XP_INCREASE_PHONE);
+			player.setGold(player.getGold() - GOLD_DECREASE_PHONE);
+
+		} else {
+			// Process unknown item.
+			System.out.println("I'm not sure what you're asking. Please rephrase.");
+		}
+	}
+  
   /**
-   * Processes the item selected by the player.
+   * Sets the game player.
    * 
-   * <p>Side-effect Changes the players health, experience, or gold depending on
-   * input.
-   * 
-   * @param selectedItem the item selected by the player.
+   * <p>Side-effect changes the game player.
+   *
+   * @param player the new game player.
    */
-  public static void processItem(ItemType selectedItem) {
-    if (selectedItem.equals(ItemType.SWORD) || selectedItem.equals(ItemType.SPEAR)) {
-      System.out.println("Can't use that here!");
-    } else if (selectedItem.equals(ItemType.POTION)) {
-      // TODO increase player health by 20.
-      System.out.println("You take a swig of potion.");
-    } else if (selectedItem.equals(ItemType.BARA_BRITH)) {
-      System.out.println("The taste of childhood rejuvenates you.");
-      // TODO increase player health by 50.
-    } else if (selectedItem.equals(ItemType.TEXT_BOOK)) {
-      System.out.println(
-          "Our new found knowledge of Discrete Maths\n" + "emboldens you.");
-      // TODO increase player experience by 75
-    } else if (selectedItem.equals(ItemType.PHONE)) {
-      System.out.println("You can call in some help.");
-      // TODO increase player experience by 100.
-      // TODO decrease gold by 10 if gold is more than 10.
-    } else {
-      System.out.println("I'm not sure what you're asking. Please rephrase.");
-    }
+  public void setPlayer(Player player) {
+	  this.player = player;
+  }
+  
+  /**
+   * Retrieves the game player.
+   *
+   * <p>Side-effect free. Not referentially transparent.
+   *
+   * @return the game player.
+   */
+  public Player getPlayer() {
+	  return player;
   }
   
   /**
@@ -208,7 +249,7 @@ public class GameManager {
    *
    * <p>Side-effect free. Not referentially transparent.
    *
-   * @return the game map
+   * @return the game map.
    */
   public Map getGameMap() {
     return gameMap;
@@ -219,7 +260,7 @@ public class GameManager {
    * 
    * <p>Side-effect changes the game map.
    *
-   * @param gameMap the new game map
+   * @param gameMap the new game map.
    */
   public void setGameMap(Map gameMap) {
     this.gameMap = gameMap;
@@ -230,7 +271,7 @@ public class GameManager {
    *
    * <p>Side-effect free. Not referentially transparent.
    *
-   * @return the X-coordinate of the player's position
+   * @return the X-coordinate of the player's position.
    */
   public int getPlayerX() {
     return playerX;
@@ -241,7 +282,7 @@ public class GameManager {
    *
    * <p>Side-effect changes the location of player on x axis.
    *
-   * @param playerX the new X-coordinate of the player's position
+   * @param playerX the new X-coordinate of the player's position.
    */
   public void setPlayerX(int playerX) {
     this.playerX = playerX;
@@ -252,7 +293,7 @@ public class GameManager {
    *
    * <p>Side-effect free. Not referentially transparent.
    *
-   * @return the Y-coordinate of the player's position
+   * @return the Y-coordinate of the player's position.
    */
   public int getPlayerY() {
     return playerY;
@@ -263,7 +304,7 @@ public class GameManager {
    * 
    * <p>Side-effect changes the location of player on y axis.
    *
-   * @param playerY the new Y-coordinate of the player's position
+   * @param playerY the new Y-coordinate of the player's position.
    */
   public void setPlayerY(int playerY) {
     this.playerY = playerY;
