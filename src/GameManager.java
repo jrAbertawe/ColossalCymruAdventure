@@ -74,7 +74,8 @@ public class GameManager {
       }
 
       System.out.println("What now?\n"); // Prompt for user input.
-      System.out.println("Please type the direction you'd like to travel indicated in brackets below: ");
+      System.out.println("Please type the direction you'd like to travel indicated"
+      		+ " in brackets below: ");
       System.out.println("Move North? (n)");
       System.out.println("Move East?  (e)");
       System.out.println("Move South? (s)");
