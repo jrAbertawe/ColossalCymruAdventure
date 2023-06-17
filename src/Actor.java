@@ -35,7 +35,7 @@ public abstract class Actor {
      *
      * @return the level of the Actor
      */
-    Integer getLevel() {
+    int getLevel() {
         return level;
     }
 
@@ -63,7 +63,7 @@ public abstract class Actor {
      * @return the armour of the Actor
      */
 
-    Integer getArmour() {
+    int getArmour() {
         return armour;
     }
 
@@ -77,7 +77,7 @@ public abstract class Actor {
      * @return the health of the Actor
      */
 
-    Integer getHealth() {
+    int getHealth() {
         return health;
     }
 
