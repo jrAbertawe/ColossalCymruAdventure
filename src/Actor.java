@@ -10,78 +10,57 @@
  * @modified 2023-06-10
  */
 public abstract class Actor {
-  protected String name; // Name of actor.
-  protected int armourClass;
-  protected int currentHealth;
-  protected int currentLevel;
+  private String name; // Name of actor.
+  private int armourClass;
+  private int currentHealth;
+  private int currentLevel;
 
-  public Actor(String name, int currentHealth, int currentLevel, int armourClass){
-      this.name = name;
-      this.currentHealth = 100;
-      this.currentLevel = currentLevel;
-
-      if (this.armourClass > currentLevel/2 ) {
-        System.out.println("Incorrect Armour Class, please rectify before continuing");
-      }
-      else {
-        this.armourClass = armourClass;
-      }
+  public Actor(String name, int currentHealth, int currentLevel,
+      int armourClass) {
+    this.name = name;
+    this.currentHealth = currentHealth;
+    this.currentLevel = currentLevel;
+    setArmourClass(armourClass);
   }
 
-  public void setActorLevel (int newActorLevel){
+  public void setActorLevel(int newActorLevel) {
     newActorLevel = currentLevel;
   }
 
-  public int currentActorLevel (){
+  public int currentActorLevel() {
     return this.currentLevel;
   }
 
-  public void setActorHealth (int newActorHealth){
-    newActorHealth = currentHealth;
+  public void setCurrentHealth(int currentHealth) {
+    this.currentHealth = currentHealth;
   }
 
-  public int currentActorHealth(){
+  public int getCurrentHealth() {
     return currentHealth;
   }
 
-  public void newArmourClass (int newArmourLevel){
+  public int getArmourClass() {
+    return armourClass;
+  }
 
-    if (newArmourLevel < 0 ){
-      newArmourLevel = 0;
-    }
-    else if (this.armourClass > (currentLevel/2) ) {
-      System.out.println("Incorrect Armour Class, please rectify before continuing");
-      return;
-    }
-    else {
-      newArmourLevel = armourClass;
+  public void setArmourClass(int armourClass) {
+    if (armourClass < 0) {
+      this.armourClass = 0;
+    } else if (this.armourClass > (armourClass / 2)) {
+      throw new IllegalArgumentException("Armour Level Invalid!");
+    } else {
+      this.armourClass = armourClass;
     }
   }
 
-
-
-
-
-
-
-
-
-
-  /**
-   * Constructs an Actor object with the given name.
-   * 
-   * <p>Side-effect changes the actor's name.
-   *
-   * @param name the name of the actor
-   */
-  public Actor(String name) {
-    this.name = name;
+  public void increaseLevel() {
+    currentLevel++;
   }
 
   /**
    * Retrieves the name of the actor.
    * 
-   * <p>Side-effect free. Not referentially transparent. 
+   * <p>Side-effect free. Not referentially transparent.
    *
    * @return the name of the actor
    */

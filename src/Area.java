@@ -7,8 +7,10 @@
  * 
  * @author jackroberts
  * 
+ * @modifiedBy Zac Healy
+ * 
  * @version 1.1
- * @modified 2023-06-10
+ * @modified 2023-06-16
  */
 public class Area {
 
@@ -26,7 +28,7 @@ public class Area {
   public static final int MONSTER_NAME_MIN = 0;
 
   private int areaLevel; // Level of difficulty.
-  private Actor monster; // Actor if monster is present in area.
+  private Monster monster; // Monster if monster is present in area.
   private String description; // Description of area.
 
   /**
@@ -41,7 +43,7 @@ public class Area {
    * @param monster     Actor of any monster if present in area. Null if no
    *                    monster is present.
    */
-  public Area(String description, int areaLevel, Actor monster) {
+  public Area(String description, int areaLevel, Monster monster) {
     setAreaLevel(areaLevel);
     setMonster(monster);
     setDescription(description);
@@ -82,7 +84,7 @@ public class Area {
    *
    * @return Actor of monster in area, null if no monster is present.
    */
-  public Actor getMonster() {
+  public Monster getMonster() {
     return monster;
   }
 
@@ -95,7 +97,7 @@ public class Area {
    * 
    * @throws IllegalArgumentException if monster name is invalid.
    */
-  public void setMonster(Actor monster) {
+  public void setMonster(Monster monster) {
     if (monster == null) {
       this.monster = null;
     } else if (monster.getName().length() <= MONSTER_NAME_MAX
