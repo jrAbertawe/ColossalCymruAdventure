@@ -35,7 +35,7 @@ public class Main {
     boolean menuDecision = true; // Establish game exit point.
 
     // Creates new player.
-    Player player = new Player("Player 1", 15, 10);
+    Player player = new Player("Player 1", 0, 5);
     // Game Loop until decision is reached to quit the game.
     while (menuDecision && player.getCurrentHealth() != 0) {
       System.out.println("Do you want to:");
