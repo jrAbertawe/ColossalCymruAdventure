@@ -14,6 +14,7 @@ public class Player extends Actor {
 		this.gold = 0;
 		this.inventory = new ArrayList<>();
 		this.currentWeapon = new Weapon(ItemType.SWORD, 20); //assign a weapon to start with
+		this.inventory.add(currentWeapon); //add starting weapon to inventory
 	}
 
 	public void levelUp() {

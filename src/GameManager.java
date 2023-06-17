@@ -62,102 +62,102 @@ public class GameManager {
    * @throws FileNotFoundException if file is not found.
    */
   public void beginGame() throws FileNotFoundException {
+      boolean returnToMainMenu = false; // Allow exit of game loop.
 
-    boolean returnToMainMenu = false; // Allow exit of game loop.
+      Scanner actionScanner = new Scanner(System.in);
 
-    Scanner actionScanner = new Scanner(System.in);
+      // Game Loop until decision is reached to return to main menu.
+      while (!returnToMainMenu) {
+          // First step is to describe where the player is.
+          System.out.println(getGameMap().getDescription(getPlayerX(), getPlayerY()));
+          // Get whether or not there is a monster at current location.
+          Actor monsterAtLocation = getGameMap().getMonsterAt(getPlayerX(),
+                  getPlayerY());
+          // If monster present, inform the player as to what the monster is called.
+          if (monsterAtLocation != null) {
+              System.out.println("There is a monster here. The monster is named: "
+                      + monsterAtLocation.getName());
+          } else {
 
-    // Game Loop until decision is reached to return to main menu.
-    while (!returnToMainMenu) {
-      // First step is to describe where the player is.
-      System.out.println(getGameMap().getDescription(getPlayerX(), getPlayerY()));
-      // Get whether or not there is a monster at current location.
-      Actor monsterAtLocation = getGameMap().getMonsterAt(getPlayerX(),
-          getPlayerY());
-      // If monster present, inform the player as to what the monster is called.
-      if (monsterAtLocation != null) {
-        System.out.println("There is a monster here. The monster is named: "
-            + monsterAtLocation.getName());
-      } else {
-        
-      }
-
-      System.out.println("What now?\n"); // Prompt for user input.
-      System.out.println("Please type the direction you'd like to travel indicated in brackets below: ");
-      System.out.println("Move North? (n)");
-      System.out.println("Move East?  (e)");
-      System.out.println("Move South? (s)");
-      System.out.println("Move West?  (w)\n");
-      
-
-      String actionChoice = actionScanner.nextLine();
-      
-      // Switches based on user choice.
-      switch (actionChoice.toLowerCase()) {
-        case "n":
-          // Moves north and updates player location if valid move.
-        	if ((0 < playerY) && (5 >= playerY)) {
-        		playerY--;
-        	} else { 
-        		System.out.println("Can't go North!");	
-        	}
-          break;
-        case "e":
-          // Moves east and updates player location if valid move.
-        	if ((0 <= playerX) && (4 > playerX)) {
-        		playerX++;
-        		System.out.println("You've moved a little bit East!");
-        	} else { 
-        		System.out.println("Can't go East!");	
-        	}
-          break;
-        case "s":
-          // Moves south and updates player location if valid move.
-        	if ((0 <= playerY) && (4 > playerY)) {
-        		playerY++;
-        		System.out.println("You've moved a little bit South!");
-        	} else { 
-        		System.out.println("Can't go South!");	
-        	}
-          break;
-        case "w":
-          // Moves west and updates player location if valid move.
-        	if (0 < playerX && 5 >= playerX) {
-        		playerX--;
-        		System.out.println("You've moved a little bit West!");
-        	} else { 
-        		System.out.println("Can't go West!");	
-        	}
-          break;
-        case "use":
-          // Handle player using an item.
-          beginUse();
-          break;
-        case "attack":
-          // Handle player attacking a monster.
-          beginBattle();
-          if(player.getCurrentHealth() == 0) {
-            returnToMainMenu = true;
           }
-          break;
-        case "quit":
-          // Allow a user to return to main menu.
-          returnToMainMenu = true;
-          break;
-        default:
-          // Handle unexpected inputs.
-          System.out.println("I'm not sure what you're asking. Please rephrase.");
+
+          System.out.println("What now?\n"); // Prompt for user input.
+          System.out.println("Please type the direction you'd like to travel indicated in brackets below: ");
+          System.out.println("Move North? (n)");
+          System.out.println("Move East?  (e)");
+          System.out.println("Move South? (s)");
+          System.out.println("Move West?  (w)\n");
+
+          String actionChoice = actionScanner.nextLine();
+
+          // Switches based on user choice.
+          switch (actionChoice.toLowerCase()) {
+              case "n":
+                  // Moves north and updates player location if valid move.
+                  if ((0 < playerY) && (5 >= playerY)) {
+                      playerY--;
+                  } else {
+                      System.out.println("Can't go North!");
+                  }
+                  break;
+              case "e":
+                  // Moves east and updates player location if valid move.
+                  if ((0 <= playerX) && (4 > playerX)) {
+                      playerX++;
+                      System.out.println("You've moved a little bit East!");
+                  } else {
+                      System.out.println("Can't go East!");
+                  }
+                  break;
+              case "s":
+                  // Moves south and updates player location if valid move.
+                  if ((0 <= playerY) && (4 > playerY)) {
+                      playerY++;
+                      System.out.println("You've moved a little bit South!");
+                  } else {
+                      System.out.println("Can't go South!");
+                  }
+                  break;
+              case "w":
+                  // Moves west and updates player location if valid move.
+                  if (0 < playerX && 5 >= playerX) {
+                      playerX--;
+                      System.out.println("You've moved a little bit West!");
+                  } else {
+                      System.out.println("Can't go West!");
+                  }
+                  break;
+              case "use":
+                  // Handle player using an item.
+                  beginUse();
+                  break;
+              case "attack":
+                  // Handle player attacking a monster.
+                  beginBattle();
+                  if (player.getCurrentHealth() == 0) {
+                      returnToMainMenu = true;
+                  }
+                  break;
+              case "health":
+                  //view current health
+                  viewCurrentHealth();
+                  break;
+              case "quit":
+                  // Allow a user to return to main menu.
+                  returnToMainMenu = true;
+                  break;
+              default:
+                  // Handle unexpected inputs.
+                  System.out.println("I'm not sure what you're asking. Please rephrase.");
+          }
       }
-    }
-    actionScanner.close();
+      actionScanner.close();
   }
 
   /**
    * Begins a battle if a monster is present.
    * 
    * <p>Side-effect free.
-   *
-   * @param gameMap the map for the game.
    */
   private void beginBattle() {
     if (gameMap.getMonsterAt(getPlayerX(), getPlayerY()) != null) {
@@ -221,6 +221,15 @@ public class GameManager {
 			System.out.println("I'm not sure what you're asking. Please rephrase.");
 		}
 	}
+
+    /**
+     * Prints the player's current health to the screen
+     *
+     * <p>Side-effect free.
+     */
+    private void viewCurrentHealth(){
+        System.out.println("Your current health is: " + player.getCurrentHealth());
+    }
   
   /**
    * Sets the game player.
