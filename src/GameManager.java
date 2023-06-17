@@ -74,8 +74,6 @@ public class GameManager {
       }
 
       System.out.println("What now?\n"); // Prompt for user input.
-      System.out.println("Please type the direction you'd like to travel indicated"
-      		+ " in brackets below: ");
       System.out.println("Move North? (n)");
       System.out.println("Move East?  (e)");
       System.out.println("Move South? (s)");
@@ -91,7 +89,8 @@ public class GameManager {
         	if (0 < playerY && 5 >= playerY) {
         		playerY--;
         	} else { 
-        		System.out.println("Can't go North!");	
+        		System.out.println("There is a cat as big as a house here. And it thinks you are "
+        				+ "a mouse! You need to sneak away from here");	
         	}
           break;
         case "e":
@@ -100,7 +99,8 @@ public class GameManager {
         		playerX++;
         		System.out.println("You've moved a little bit East!");
         	} else { 
-        		System.out.println("Can't go East!");	
+        		System.out.println("Careful! There is a cliff edge here. You'll need to find "
+        				+ "another way");	
         	}
           break;
         case "s":
@@ -109,7 +109,8 @@ public class GameManager {
         		playerY++;
         		System.out.println("You've moved a little bit South!");
         	} else { 
-        		System.out.println("Can't go South!");	
+        		System.out.println("The path is blocked by a sleeping giant. "
+        				+ "You cannot travel this way!");	
         	}
           break;
         case "w":
@@ -118,7 +119,7 @@ public class GameManager {
         		playerX--;
         		System.out.println("You've moved a little bit West!");
         	} else { 
-        		System.out.println("Can't go West!");	
+        		System.out.println("There's quicksand here. Turn around before you sink!");	
         	}
           break;
         case "use":
