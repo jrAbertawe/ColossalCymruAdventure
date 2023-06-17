@@ -4,6 +4,13 @@
 /**
  * The Weapon class represents a specific type of item that can inflict damage.
  * It extends the Item class.
+ * 
+ * @author Zac Healy
+ *
+ * @modifiedBy Zac Healy
+ * 
+ * @version 1.0
+ * @modified 2023-06-17
  */
 public class Weapon extends Item {
   private int weaponDamage; // The damage the weapon serves.

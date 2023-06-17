@@ -6,7 +6,8 @@
  * 
  * @author jackroberts
  *
- * @version 1.1
+ * @version 1.2
+ * @modifiedBy Zac Healy
  * @modified 2023-06-10
  */
 public enum ItemType {
