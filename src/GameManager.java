@@ -370,10 +370,26 @@ public class GameManager {
     this.playerY = playerY;
   }
 
+  /**
+   * Checks if the game should return to the main menu.
+   * 
+   * <p>Side-effect free. Not referentially transparent.
+   * 
+   * @return true if the game should return to the main menu, false otherwise
+   */
   public boolean isReturnToMainMenu() {
     return returnToMainMenu;
   }
 
+  /**
+   * Sets the flag indicating whether the game should return to the main menu.
+   * 
+   * <p>Side-effect changes the state of return to main menu. Referentially
+   * transparent.
+   * 
+   * @param returnToMainMenu indicates that the game should return to the main
+   *                         menu
+   */
   public void setReturnToMainMenu(boolean returnToMainMenu) {
     this.returnToMainMenu = returnToMainMenu;
   }
