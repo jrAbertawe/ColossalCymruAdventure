@@ -59,7 +59,8 @@ public class GameManager {
   /**
    * Initialises a game and provides main gameplay loop.
    * 
-   * <p>Side-effect free.
+   * <p>
+   * Side-effect free.
    *
    * @throws FileNotFoundException if file is not found.
    */
@@ -67,25 +68,12 @@ public class GameManager {
 
     setReturnToMainMenu(false); // Allow exit of game loop.
 
-      Scanner actionScanner = new Scanner(System.in);
-
-      // Game Loop until decision is reached to return to main menu.
-      while (!returnToMainMenu) {
-          // First step is to describe where the player is.
-          System.out.println(getGameMap().getDescription(getPlayerX(), getPlayerY()));
-          // Get whether or not there is a monster at current location.
-          Actor monsterAtLocation = getGameMap().getMonsterAt(getPlayerX(),
-                  getPlayerY());
-          // If monster present, inform the player as to what the monster is called.
-          if (monsterAtLocation != null) {
-              System.out.println("There is a monster here. The monster is named: "
-                      + monsterAtLocation.getName());
-          } else {
-
+    Scanner actionScanner = new Scanner(System.in);
     // Game Loop until decision is reached to return to main menu.
     while (!returnToMainMenu) {
       // First step is to describe where the player is.
-      System.out.println(getGameMap().getDescription(getPlayerX(), getPlayerY()));
+      System.out
+          .println(getGameMap().getDescription(getPlayerX(), getPlayerY()));
       // Get whether or not there is a monster at current location.
       Actor monsterAtLocation = getGameMap().getMonsterAt(getPlayerX(),
           getPlayerY());
@@ -93,7 +81,7 @@ public class GameManager {
       if (monsterAtLocation != null) {
         System.out.println("There is a monster here. The monster is named: "
             + monsterAtLocation.getName());
-      } 
+      }
       System.out.println();
       System.out.println("What now?");
       String actionChoice = actionScanner.nextLine();
