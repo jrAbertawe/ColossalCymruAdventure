@@ -3,6 +3,13 @@
  */
 /**
  * The Item class represents an item with a specific type.
+ * 
+ * @author Zac Healy
+ *
+ * @modifiedBy Zac Healy
+ * 
+ * @version 1.0
+ * @modified 2023-06-17
  */
 public class Item {
   private ItemType type; // The item type of the item.
