@@ -13,8 +13,8 @@ class BattleManagerTestSuite {
         //PLAN
         System.setOut(new PrintStream(outContent));
 
-        Actor player = new Player("Player", 20, 10);
-        Actor monster = new Monster("Monster");
+        Player player = new Player("Player", 20, 10);
+        Monster monster = new Monster("Monster");
         BattleManager battleManager = new BattleManager(player, monster);
 
         //ACT
@@ -29,8 +29,8 @@ class BattleManagerTestSuite {
         //PLAN
         System.setOut(new PrintStream(outContent));
 
-        Actor player = new Player("Player", 20, 10);
-        Actor monster = new Monster("Monster", 20, 10);
+        Player player = new Player("Player", 20, 10);
+        Monster monster = new Monster("Monster", 20, 10);
         BattleManager battleManager = new BattleManager(player, monster);
 
         //ACT
@@ -45,8 +45,8 @@ class BattleManagerTestSuite {
         //PLAN
         System.setOut(new PrintStream(outContent));
 
-        Actor player = new Player("Player", 20, 10);
-        Actor monster = new Monster("Monster");
+        Player player = new Player("Player", 20, 10);
+        Monster monster = new Monster("Monster");
         BattleManager battleManager = new BattleManager(player, monster);
 
         //ACT

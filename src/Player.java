@@ -6,14 +6,14 @@ public class Player extends Actor {
 	private int experience;
 	private int gold;
 	private List<Item> inventory;
-	private Item currentWeapon;
+	private Weapon currentWeapon;
 
 	public Player(String name, int level, int armourClass) {
 		super(name, 100, level, armourClass);
 		this.experience = 0;
 		this.gold = 0;
 		this.inventory = new ArrayList<>();
-		this.currentWeapon = null;
+		this.currentWeapon = new Weapon(ItemType.SWORD, 20); //assign a weapon to start with
 	}
 
 	public void levelUp() {
@@ -49,29 +49,14 @@ public class Player extends Actor {
 		}
 	}
 
-	public void addToInventory(String itemName) {
-		Item convertedItem = new Item(ItemType.stringToItem(itemName));
-
-		if (convertedItem.getType() != ItemType.INVALID) {
-			inventory.add(convertedItem);
-			System.out.println("Added " + itemName + " to your inventory.");
-		} else {
-			System.out.println("Invalid item: " + itemName);
-		}
+	public void addToInventory(Item item) {
+		inventory.add(item);
+		System.out.println("Added " + item.getType().toString() + " to your inventory.");
 	}
 
-	public void removeFromInventory(String itemName) {
-		Item convertedItem = new Item(ItemType.stringToItem(itemName));
-
-		if (convertedItem.getType() != ItemType.INVALID) {
-			if (inventory.remove(convertedItem)) {
-				System.out.println("Removed " + itemName + " from your inventory.");
-			} else {
-				System.out.println(itemName + " is not in your inventory.");
-			}
-		} else {
-			System.out.println("Invalid item: " + itemName);
-		}
+	public void removeFromInventory(Item item) {
+		inventory.remove(item);
+		System.out.println("Removed " + item.getType().toString() + " from your inventory.");
 	}
 
 	public void showInventory() {
@@ -88,14 +73,14 @@ public class Player extends Actor {
 		}
 	}
 
-	public void addGold(int Gold) {
+	public void addGold(int gold) {
 
-		if (this.gold <= 9999999) {
+		if (this.gold >= 9999999) {
 			System.out.println("You are already at max gold, sorry you cannot carry anymore.");
 			this.gold = 9999999;
 		} else {
-			this.gold = this.gold + Gold;
-
+			this.gold += gold;
+			System.out.println("You gained " + gold + " gold!");
 		}
 	}
 
@@ -106,19 +91,16 @@ public class Player extends Actor {
 			this.gold = 0;
 		} else {
 			this.gold = this.gold - Gold;
-
 		}
 	}
 
-	public void equipWeapon(String itemName) {
-		Item convertedItem = new Item(ItemType.stringToItem(itemName));
+	public void equipWeapon(Weapon weapon) {
+		currentWeapon = weapon;
+		System.out.println("Equipped " + weapon.getType() + " as your current weapon.");
+	}
 
-		if (convertedItem.getType() != ItemType.INVALID && inventory.contains(convertedItem)) {
-			currentWeapon = convertedItem;
-			System.out.println("Equipped " + itemName + " as your current weapon.");
-		} else {
-			System.out.println("Invalid item: " + itemName);
-		}
+	public Weapon getCurrentWeapon(){
+		return this.currentWeapon;
 	}
 
 	public void showCurrentWeapon() {
