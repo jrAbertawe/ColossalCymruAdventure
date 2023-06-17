@@ -15,7 +15,8 @@ public class Monster extends Actor {
 
 	public Item randomItem() {
 		ItemType[] itemValues = ItemType.values();
-		int randomIndex = new Random().nextInt(itemValues.length);
+		//length - 1 as we don't want to add an Invalid item
+		int randomIndex = new Random().nextInt(itemValues.length -1);
 		return new Item(itemValues[randomIndex]);
 	}
 	

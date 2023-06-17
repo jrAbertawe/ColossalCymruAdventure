@@ -75,7 +75,7 @@ public class Map {
       int level = Integer.parseInt(mapReader.next()); // Reads the maps level.
       // Reads the monsters name.
       String monsterName = mapReader.nextLine().replace("/", "");
-      Actor monster = scanMonsterName(monsterName); // Checks for null monster.
+      Monster monster = scanMonsterName(monsterName); // Checks for null monster.
       Area area = new Area(description, level, monster); // Creates new area.
       int row = lineNo % MAX_MAP_SIZE_HOR; // Calculation for map row.
       int col = lineNo / MAX_MAP_SIZE_VER; // Calculation for map column.
@@ -93,7 +93,7 @@ public class Map {
    * @param name the name of the monster.
    * @return the name of the monster if it has a name, null otherwise.
    */
-  private Actor scanMonsterName(String name) {
+  private Monster scanMonsterName(String name) {
     // Checks if the monsters name is equal to null
     if (name.equalsIgnoreCase("null")) {
       return null;
@@ -111,10 +111,10 @@ public class Map {
    * @param x The x coordinate of the desired area.
    * 
    * @param y The y coordinate of the desired area.
-   * @return Actor that is at the specified area. If no Actor is found, returns
+   * @return Monster that is at the specified area. If no Actor is found, returns
    *         null.
    */
-  public Actor getMonsterAt(int x, int y) {
+  public Monster getMonsterAt(int x, int y) {
     return grid[x][y].getMonster();
   }
 }

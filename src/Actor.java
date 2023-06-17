@@ -18,7 +18,7 @@ public abstract class Actor {
   public Actor(String name, int currentHealth, int currentLevel,
       int armourClass) {
     this.name = name;
-    this.currentHealth = 100;
+    this.currentHealth = currentHealth;
     this.currentLevel = currentLevel;
     setArmourClass(armourClass);
   }

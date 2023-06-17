@@ -67,7 +67,20 @@ public class GameManager {
 
     setReturnToMainMenu(false); // Allow exit of game loop.
 
-    Scanner actionScanner = new Scanner(System.in);
+      Scanner actionScanner = new Scanner(System.in);
+
+      // Game Loop until decision is reached to return to main menu.
+      while (!returnToMainMenu) {
+          // First step is to describe where the player is.
+          System.out.println(getGameMap().getDescription(getPlayerX(), getPlayerY()));
+          // Get whether or not there is a monster at current location.
+          Actor monsterAtLocation = getGameMap().getMonsterAt(getPlayerX(),
+                  getPlayerY());
+          // If monster present, inform the player as to what the monster is called.
+          if (monsterAtLocation != null) {
+              System.out.println("There is a monster here. The monster is named: "
+                      + monsterAtLocation.getName());
+          } else {
 
     // Game Loop until decision is reached to return to main menu.
     while (!returnToMainMenu) {
@@ -208,8 +221,6 @@ public class GameManager {
    * Begins a battle if a monster is present.
    * 
    * <p>Side-effect free.
-   *
-   * @param gameMap the map for the game.
    */
   private void beginBattle() {
     if (gameMap.getMonsterAt(getPlayerX(), getPlayerY()) != null) {
@@ -273,6 +284,15 @@ public class GameManager {
 			System.out.println("I'm not sure what you're asking. Please rephrase.");
 		}
 	}
+
+    /**
+     * Prints the player's current health to the screen
+     *
+     * <p>Side-effect free.
+     */
+    private void viewCurrentHealth(){
+        System.out.println("Your current health is: " + player.getCurrentHealth());
+    }
   
   /**
    * Sets the game player.
