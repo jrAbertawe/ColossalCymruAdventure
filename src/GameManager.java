@@ -82,6 +82,7 @@ public class GameManager {
         System.out.println("There is a monster here. The monster is named: "
             + monsterAtLocation.getName());
       }
+
       System.out.println();
       System.out.println("What now?");
       String actionChoice = actionScanner.nextLine();
