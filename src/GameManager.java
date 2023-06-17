@@ -20,9 +20,15 @@ import java.util.Scanner;
 public class GameManager {
 
   /** Starting position for player on x axis. */
-  public static final int PLAYER_STARTING_POS_X = 0;
+  public static final int PLAYER_STARTING_POS_X = 2;
   /** Starting position for player on y axis. */
-  public static final int PLAYER_STARTING_POS_Y = 0;
+  public static final int PLAYER_STARTING_POS_Y = 2;
+  /** Minimum position for player on x or y axis */
+  public static final int MIN_POS = 0;
+  /** Maximum position for player moving North or West */
+  public static final int MAX_POS_NW = 5;
+  /** Maximum position for player moving South or East */
+  public static final int MAX_POS_SE = 4;
   /** Health increase after drinking a potion. */
   public static final int HEALTH_INCREASE_POTION = 20;
   /** Health increase after eating bara brith. */
@@ -59,8 +65,7 @@ public class GameManager {
   /**
    * Initialises a game and provides main gameplay loop.
    * 
-   * <p>
-   * Side-effect free.
+   * <p>Side-effect free.
    *
    * @throws FileNotFoundException if file is not found.
    */
@@ -150,8 +155,8 @@ public class GameManager {
    * @return the updated position of the player after moving
    */
   private int moveNorthOrWest(int playerPos, String direction) {
-    // Checks if user is able to move to the desire position.
-    if (0 < playerPos && 5 >= playerPos) {
+    // Checks if user is able to move to the desired position.
+    if ( playerPos > MIN_POS && playerPos <= MAX_POS_NW) {
       // Activates if the user is able to move.
       System.out.println("You've moved a little bit " + direction + "!");
       playerPos--;
@@ -177,7 +182,7 @@ public class GameManager {
    */
   private int moveSouthOrEast(int playerPos, String direction) {
     // Checks if user is able to move to the desire position.
-    if (0 <= playerPos && 4 > playerPos) {
+    if (playerPos >= MIN_POS && playerPos < MAX_POS_SE) {
       System.out.println("You've moved a little bit " + direction + "!");
       // Activates if the user is able to move.
       playerPos++;
