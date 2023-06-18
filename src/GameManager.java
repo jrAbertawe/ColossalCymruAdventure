@@ -12,8 +12,7 @@ import java.util.Scanner;
  */
 public class GameManager {
 	
-	public final static Map GAME_MAP = new Map(); //Create new map for entire
-	// game.
+	public final static Map GAME_MAP = new Map(); //Create new map for entire game.
 	private static int playerX = 0; //Tracks x coord of player. player starts in top left
 	private static int playerY = 0; //tracks y coord of player. player starts in top left
 	
@@ -110,7 +109,24 @@ public class GameManager {
 	}
 
 	private static void showMap(){
-		GAME_MAP
+		for (int x = 0; x < GAME_MAP.MAX_MAP_SIZE; x++) {
+			System.out.println("---------------");
+			for (int y = 0; y < GAME_MAP.MAX_MAP_SIZE; y++) {
+				//New blank Area gets added to every cell.
+				System.out.print("|");
+
+				if (GAME_MAP.getMonsterAt(x,y) == null) {
+					System.out.print(" ");
+				} else {
+					System.out.print("X");
+				}
+
+
+				System.out.print("|");
+			}
+			System.out.println(); // Blank line
+		}
+		System.out.println("---------------");
 	}
 
 
