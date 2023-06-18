@@ -31,7 +31,7 @@ public class Player extends Actor {
 	 * 
 	 * <p>Side-effect free. Not referentially transparent.
 	 * 
-	 * @return
+	 * @return The experience of the player.
 	 */
 	public int getExperience() {
 		return experience;
