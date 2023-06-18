@@ -12,7 +12,8 @@ import java.util.Scanner;
  */
 public class GameManager {
 	
-	public final static Map GAME_MAP = new Map(); //Create new map for entire game.
+	public final static Map GAME_MAP = new Map(); //Create new map for entire
+	// game.
 	private static int playerX = 0; //Tracks x coord of player. player starts in top left
 	private static int playerY = 0; //tracks y coord of player. player starts in top left
 	
@@ -69,6 +70,10 @@ public class GameManager {
 					//Handle player attacking a monster.
 					beginBattle();
 					break;
+				case "map":
+					//Show the map to the user.
+					showMap();
+					break;
 				case "quit":
 					//Allow a user to return to main menu.
 					returnToMainMenu = true;
@@ -103,6 +108,10 @@ public class GameManager {
 		System.out.println("WARNING - Feature Unimplemented");
 		//TODO Handle using items if the player has them.
 	}
-	
+
+	private static void showMap(){
+		GAME_MAP
+	}
+
 
 }
