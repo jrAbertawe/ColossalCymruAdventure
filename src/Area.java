@@ -115,6 +115,10 @@ public class Area {
     }
   }
 
+  public void removeMonster(){
+    this.monster = null;
+  }
+
   /**
    * Provides description of area.
    * 

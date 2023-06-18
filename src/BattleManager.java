@@ -11,7 +11,7 @@ import java.util.Random;
  * @author jackroberts
  * 
  * @modifiedBy Owain Greener
- * @modified 2023-06-15
+ * @modified 2023-06-17
  *
  */
 public class BattleManager {
