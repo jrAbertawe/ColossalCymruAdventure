@@ -3,9 +3,6 @@
  */
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
 
 /**
  * This class describes a GameManager, the class responsible for dictating the
@@ -74,8 +71,7 @@ public class GameManager {
     // Game Loop until decision is reached to return to main menu.
     while (!returnToMainMenu) {
       // First step is to describe where the player is.
-      System.out
-          .println(getGameMap().getDescription(getPlayerX(), getPlayerY()));
+      System.out.println(getGameMap().getDescription(getPlayerX(), getPlayerY()));
       // Get whether or not there is a monster at current location.
       Actor monsterAtLocation = getGameMap().getMonsterAt(getPlayerX(),
           getPlayerY());
@@ -123,12 +119,17 @@ public class GameManager {
         // Handle player using an item.
         beginUse();
         break;
+        case "health":
+            viewCurrentHealth();
+            break;
       case "attack":
         // Handle player attacking a monster.
         beginBattle();
         if (player.getCurrentHealth() == 0) {
           setReturnToMainMenu(true);
         }
+        // remove monster that was defeated
+          gameMap.removeMonsterAt(playerX, playerY);
         break;
       case "quit":
         // Allow a user to return to main menu.
@@ -153,6 +154,7 @@ public class GameManager {
     System.out.println("Move South? (s)");
     System.out.println("Move West? (w)");
     System.out.println("Use item? (use)");
+    System.out.println("View health? (health)");
     System.out.println("Attack Monster? (attack)");
     System.out.println("Quit? (quit)\n");
   }

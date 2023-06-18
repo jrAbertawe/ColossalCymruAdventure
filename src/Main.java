@@ -12,7 +12,8 @@ import java.util.Scanner;
  * @author jackroberts
  *
  * @version 1.1
- * @modified 2023-06-10
+ * @modifiedby Owain Greener
+ * @modified 2023-07-17
  */
 public class Main {
 

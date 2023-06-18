@@ -60,7 +60,6 @@ public class Map {
    * 
    * <p>Side-effect changes the grid.
    *
-   * @param gameMap the file that holds the map.
    * @throws FileNotFoundException if file is not found.
    */
   private void generateBlankMap() throws FileNotFoundException {
@@ -117,4 +116,6 @@ public class Map {
   public Monster getMonsterAt(int x, int y) {
     return grid[x][y].getMonster();
   }
+
+  public void removeMonsterAt(int x, int y) { grid[x][y].removeMonster(); }
 }
