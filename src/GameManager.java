@@ -138,56 +138,8 @@ public class GameManager {
     }
   }
   
-  /**
-   * Moves the player north or west.
-   * 
-   * <p>Side-effect free. Referentially Transparent.
-   * 
-   * @param playerPos the current position of the player
-   * 
-   * @param direction the direction to move (either "north" or "west")
-   * 
-   * @return the updated position of the player after moving
-   */
-  private int moveNorthOrWest(int playerPos, String direction) {
-    // Checks if user is able to move to the desire position.
-    if (0 < playerPos && 5 >= playerPos) {
-      // Activates if the user is able to move.
-      System.out.println("You've moved a little bit " + direction + "!");
-      playerPos--;
-      return playerPos;
-    } else {
-      // Activates if the user is unable to move.
-      System.out.println("Can't go " + direction + "!");
-      return playerPos;
-    }
-  }
+  
 
-  /**
-   * 
-   * Moves the player south or east.
-   * 
-   * <p>Side-effect free. Referentially Transparent.
-   * 
-   * @param playerPos the current position of the player
-   * 
-   * @param direction the direction to move (either "south" or "east")
-   * 
-   * @return the updated position of the player after moving
-   */
-  private int moveSouthOrEast(int playerPos, String direction) {
-    // Checks if user is able to move to the desire position.
-    if (0 <= playerPos && 4 > playerPos) {
-      System.out.println("You've moved a little bit " + direction + "!");
-      // Activates if the user is able to move.
-      playerPos++;
-      return playerPos;
-    } else {
-      // Activates if the user is unable to move.
-      System.out.println("Can't go " + direction + "!");
-      return playerPos;
-    }
-  }
 
   /**
    * Displays the player instructions on the console.
