@@ -84,7 +84,6 @@ public class GameManager {
         System.out.println("There is a monster here. The monster is named: "
             + monsterAtLocation.getName());
       }
-
       System.out.println();
       System.out.println("What now?");
       String actionChoice = actionScanner.nextLine();
@@ -226,14 +225,14 @@ public class GameManager {
 		}
 	}
 
-    /**
-     * Prints the player's current health to the screen
-     *
-     * <p>Side-effect free.
-     */
-    private void viewCurrentHealth(){
-        System.out.println("Your current health is: " + player.getCurrentHealth());
-    }
+	/**
+	 * Prints the player's current health to the screen
+	 *
+	 * <p>Side-effect free.
+	 */
+	private void viewCurrentHealth() {
+		System.out.println("Your current health is: " + player.getCurrentHealth());
+	}
   
   /**
    * Sets the game player.

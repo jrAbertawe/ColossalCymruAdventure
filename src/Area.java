@@ -70,9 +70,12 @@ public class Area {
    * @throws IllegalArgumentException if level is invalid.
    */
   public void setAreaLevel(int areaLevel) {
+    // Checks if level is within the valid range.
     if (areaLevel <= LEVLEL_MAX && areaLevel >= LEVLEL_MIN) {
+      // Checks if the level is valid.
       this.areaLevel = areaLevel;
     } else {
+      // Errors if the level is outside the valid range.
       throw new IllegalArgumentException("Level invalid!");
     }
   }
@@ -98,12 +101,16 @@ public class Area {
    * @throws IllegalArgumentException if monster name is invalid.
    */
   public void setMonster(Monster monster) {
+    // Checks if the monsters name is valid.
     if (monster == null) {
+      // Checks if the monsters name is null.
       this.monster = null;
     } else if (monster.getName().length() <= MONSTER_NAME_MAX
         && monster.getName().length() >= MONSTER_NAME_MIN) {
+      // Checks if the monsters name is within the valid range.
       this.monster = monster;
     } else {
+      // Errors if the monsters name is outside the valid range.
       throw new IllegalArgumentException("Monster name invalid!");
     }
   }
@@ -129,10 +136,13 @@ public class Area {
    * @throws IllegalArgumentException if description is invalid.
    */
   public void setDescription(String description) {
+    // Checks if the area description is within the valid range.
     if (description.length() <= DESCRIPTION_MAX
         && description.length() >= DESCRIPTION_MIN) {
+      // Checks if the description is valid.
       this.description = description;
     } else {
+      // Errors if the area description is outside the valid range.
       throw new IllegalArgumentException("Description invalid!");
     }
   }
