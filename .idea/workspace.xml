@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a40cd695-0f6e-4c31-889d-c64e363e84e7" name="Changes" comment="Allow for null &amp; non-null areas">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="a40cd695-0f6e-4c31-889d-c64e363e84e7" name="Changes" comment="Lets the user know what monster is in front of them">
       <change beforePath="$PROJECT_DIR$/src/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +52,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687101539625</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Lets the user know what monster is in front of them">
+      <created>1687102373881</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1687102373881</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -96,6 +102,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Allow for null &amp; non-null areas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Allow for null &amp; non-null areas" />
+    <MESSAGE value="Lets the user know what monster is in front of them" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lets the user know what monster is in front of them" />
   </component>
 </project>
