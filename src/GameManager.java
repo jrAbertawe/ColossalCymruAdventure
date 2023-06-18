@@ -4,6 +4,7 @@
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+
 /**
  * This class describes a GameManager, the class responsible for dictating the
  * flow of gameplay. This class allows a player to navigate the map, initiate
@@ -20,9 +21,9 @@ import java.util.Scanner;
 public class GameManager {
 
   /** Starting position for player on x axis. */
-  public static final int PLAYER_STARTING_POS_X = 0;
+  public static final int PLAYER_STARTING_POS_X = 2;
   /** Starting position for player on y axis. */
-  public static final int PLAYER_STARTING_POS_Y = 0;
+  public static final int PLAYER_STARTING_POS_Y = 2;
   /** Health increase after drinking a potion. */
   public static final int HEALTH_INCREASE_POTION = 20;
   /** Health increase after eating bara brith. */
@@ -99,23 +100,24 @@ public class GameManager {
    * @param actionChoice the user's action choice
    */
   private void processMove(String actionChoice) {
+	  Movement movement = new Movement();
     // Switches based on user choice.
     switch (actionChoice.toLowerCase()) {
       case "n":
         // Moves north and updates player location if valid move.
-        playerY = moveNorthOrWest(playerY, "North");
+        playerY = movement.moveNorthOrWest(playerY, "North");
         break;
       case "e":
         // Moves east and updates player location if valid move.
-        playerX = moveSouthOrEast(playerX, "East");
+        playerX = movement.moveSouthOrEast(playerX, "East");
         break;
       case "s":
         // Moves south and updates player location if valid move.
-        playerY = moveSouthOrEast(playerY, "South");
+        playerY = movement.moveSouthOrEast(playerY, "South");
         break;
       case "w":
         // Moves west and updates player location if valid move.
-        playerX = moveNorthOrWest(playerX, "West");
+        playerX = movement.moveNorthOrWest(playerX, "West");
         break;
       case "use":
         // Handle player using an item.

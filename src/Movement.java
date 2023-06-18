@@ -1,13 +1,22 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Scanner;
 
-public class PlayerMovement {
+/**
+ * This class is responsible for dictating the movement in the game
+ * This class includes methods that help to allow a player to navigate 
+ * the game map.
+ *
+ * @author Sarah Ramsey
+ *
+ * @modifiedBy Sarah Ramsey
+ * 
+ * @version 1.0
+ * @modified 2023-06-18
+ */
 
-    /** Starting position for player on x axis. */
-    public static final int PLAYER_STARTING_POS_X = 2;
-    /** Starting position for player on y axis. */
-    public static final int PLAYER_STARTING_POS_Y = 2;
+public class Movement {
+
+
     /** Minimum position for player on x or y axis */
     public static final int MIN_POS = 0;
     /** Maximum position for player moving North or West */
@@ -15,7 +24,7 @@ public class PlayerMovement {
     /** Maximum position for player moving South or East */
     public static final int MAX_POS_SE = 4;
     /** String printed if player moves too far North*/
-    public static final String TOO_FAR_NORTH = "There is a cat as big as a house here. And it thinks you are "
+    public static final String TOO_FAR_NORTH = "There is a cat as big as a house. And it thinks you are "
 	     + "a mouse! You need to sneak away from here";
     /** String printed if player moves too far East */
     public static final String TOO_FAR_EAST = "Careful! There is a cliff edge here. You'll need to find "
@@ -37,7 +46,7 @@ public class PlayerMovement {
 	 * 
 	 * @return the updated position of the player after moving
 	 */
-    private int moveNorthOrWest(int playerPos, String direction) {
+    public int moveNorthOrWest(int playerPos, String direction) {
 	     // Checks if user is able to move to the desired position.
 	     if ( playerPos > MIN_POS && playerPos <= MAX_POS_NW) {
 	       // Activates if the user is able to move.
@@ -54,8 +63,9 @@ public class PlayerMovement {
 	             // Prints dialogue if player is trying to move too far West.
 	             System.out.println(TOO_FAR_WEST);
 	        }
-	        return playerPos;
+	        
 	     }
+	     return playerPos;
 	    
     }
 
@@ -71,7 +81,7 @@ public class PlayerMovement {
 	      * 
 	      * @return the updated position of the player after moving
 	      */
-	     private int moveSouthOrEast(int playerPos, String direction) {
+	     public int moveSouthOrEast(int playerPos, String direction) {
 	       // Checks if user is able to move to the desire position.
 	       if (playerPos >= MIN_POS && playerPos < MAX_POS_SE) {
 	         System.out.println("You've moved a little bit " + direction + "!");
