@@ -3,6 +3,8 @@
  */
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 
 /**
@@ -60,8 +62,7 @@ public class GameManager {
   /**
    * Initialises a game and provides main gameplay loop.
    * 
-   * <p>
-   * Side-effect free.
+   * <p>Side-effect free.
    *
    * @throws FileNotFoundException if file is not found.
    */
@@ -139,9 +140,6 @@ public class GameManager {
         System.out.println("I'm not sure what you're asking. Please rephrase.");
     }
   }
-  
-  
-
 
   /**
    * Displays the player instructions on the console.
