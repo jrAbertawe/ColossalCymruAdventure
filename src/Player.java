@@ -1,10 +1,11 @@
 /**
- * This class describes a PLayer.
- * @author lowriholborow
+ * This class describes a Player.
  *
+ * @author lowriholborow
  */
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Player extends Actor {
@@ -13,72 +14,103 @@ public class Player extends Actor {
     final int MAX_GOLD = 9999999;
     final int MIN_EXPERIENCE = 0;
 
-    int experience = 0;
-    int gold = 0;
-    int gainedXP;
-    ArrayList<Item> inventory = new ArrayList<Item>();
+    int experience = MIN_EXPERIENCE;
+    int gold = MIN_GOLD;
+
+    List<Item> inventory = new ArrayList<Item>();
     Item currentWeapon;
 
     /**
      * Constructor for Player
      */
-    public Player(String name, int level, int armour, int health, int experience, List<Item> inventory, int gold, Item currentWeapon) {
-        super(name, level, armour, health);
-        this.experience = experience;
-        this.inventory = (ArrayList<Item>) inventory;
-        this.gold = gold;
-        this.currentWeapon = currentWeapon;
+    public Player(String name) {
+        super(name);
     }
 
     // Getters and Setters
+    /**
+     * Returns the experience for this Player
+     *
+     * @return the experience for this Player
+     */
 
     int getExperience() {
         return experience;
     }
 
-    void setExperience(int newExperience) {
-        this.experience = newExperience;
+    /**
+     * Sets and calculates the experience of this Player
+     */
+
+    void addExperience(int gainedXP) {
+        //experience = gainedXP if 0 ≤ level ≤ 100
+        this.level += gainedXP;
+
+        // Once the Level has reached its maximum, the player gets 100 gold instead of experience.
+        if (this.level >= MAX_LEVEL) {
+            addGold(100);
+            return;
+        }
+
+        // When the player gathers enough Experience, their Level increases by 1.
+        if (this.experience > 3 * (this.level * 0.1) + 10) {
+            setLevel(this.level + 1);
+            return;
+        }
     }
 
-    public ArrayList<Item> getInventory() {
-        return inventory;
+    /**
+     * Get and manage the Player's items
+     */
+
+    public List<Item> getInventory() {
+        return Collections.unmodifiableList(inventory);
     }
+
+    void addToInventory(Item item) {
+        inventory.add(item);
+    }
+
+    void removeFromInventory(Item item) {
+        inventory.remove(item);
+    }
+
+    /**
+     * Returns the gold amount for this Player
+     *
+     * @return the gold amount for this Player
+     */
 
     int getGold() {
         return gold;
     }
 
-    void setGold(int newGold) {
-        this.gold = newGold;
+    //Don't add more gold if at max
+    void addGold(int gold) {
+        if (gold >= MAX_GOLD) {
+            return;
+        }
+    //Add gold to the Player
+        this.gold += gold;
     }
+
+    /**
+     * Returns the current weapon for this Player
+     *
+     * @return the current weapon for this Player
+     */
 
     Item getCurrentWeapon() {
         return currentWeapon;
     }
 
+    /**
+     * Sets the current weapon for this Player
+     */
+
     void setCurrentWeapon(Item newCurrentWeapon) {
         this.currentWeapon = newCurrentWeapon;
     }
-
-    //To be reviewed. This does not happen for monsters.
-    static int getExperience(int level, int experience, int gainedXP) {
-        if (level >= 0 && level <= 100) {
-            experience += gainedXP;
-
-            //When the player gathers enough Experience, their Level increases by 1.
-            if (experience > 3 * (level * 0.1) + 10) {
-                level++;
-            }
-
-            //Once the Level has reached its maximum, the player gets 100 gold instead of experience.
-            if (level > 100) {
-                this.gold + 100;
-            }
-
-        }
-
-
-
 }
 
 

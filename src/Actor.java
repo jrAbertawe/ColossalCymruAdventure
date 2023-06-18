@@ -1,7 +1,7 @@
 /**
  * This class describes an Actor: a character in the game.
- * @author jackroberts
  *
+ * @author lowriholborow
  */
 public abstract class Actor {
 
@@ -10,24 +10,32 @@ public abstract class Actor {
     final int MIN_ARMOUR = 0;
     final int MAX_HEALTH = 100;
 
-    int level = MIN_LEVEL;
     String name;
+
+    int level = MIN_LEVEL;
     int armour = 0;
     int health = MAX_HEALTH;
 
     /**
      * Constructor for Actor
      */
-
-    public Actor(String name, int level, int armour, int health) {
+    public Actor(String name) {
         this.name = name;
-        this.level = level;
-        this.armour = armour;
-        this.health = health;
     }
-
+    // Getters and Setters
+    /**
+     * Sets the level of this Actor
+     */
     void setLevel(int newLevel) {
-        this.level = newLevel;
+        int level = newLevel;
+
+        if (level >= MAX_LEVEL) {
+            level = MAX_LEVEL;
+        } else if (level < MIN_LEVEL) {
+            level = MIN_LEVEL;
+        }
+
+        this.level = level;
     }
 
     /**
@@ -39,6 +47,9 @@ public abstract class Actor {
         return level;
     }
 
+    /**
+     * Sets the name of this Actor
+     */
     void setName(String newName) {
         this.name = newName;
     }
@@ -53,8 +64,21 @@ public abstract class Actor {
         return name;
     }
 
+    /**
+     * Sets the armour of this Actor
+     */
+
     void setArmour(int newArmour) {
-        this.armour = newArmour;
+        int armour = newArmour;
+
+        if (armour < MIN_ARMOUR) {
+            armour = 0;
+        } else if (armour > 0) {
+            int maximumArmour = Math.max(level, MIN_LEVEL) / 2;
+            armour = armour > maximumArmour ? maximumArmour : armour;
+        }
+
+        this.armour = armour;
     }
 
     /**
@@ -67,8 +91,18 @@ public abstract class Actor {
         return armour;
     }
 
+    /**
+     * Sets the health of this Actor
+     */
+
     void setHealth(int newHealth) {
-        this.health = newHealth;
+        int health = newHealth;
+
+        if (health > MAX_HEALTH) {
+            health = MAX_HEALTH;
+        }
+
+        this.health = health;
     }
 
     /**
@@ -80,13 +114,7 @@ public abstract class Actor {
     int getHealth() {
         return health;
     }
-
-    static int calculateArmour(int level){
-        int armour = level/2;
-        return armour;
-        }
-
-    }
+}
 
 
 
