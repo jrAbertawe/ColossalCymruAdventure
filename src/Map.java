@@ -45,13 +45,17 @@ public class Map {
 
 					String[] s_line = file.nextLine().split("/");
 					String s_descString = s_line[0];
-					int s_level = Integer.parseInt(s_line[1]);
-					//Actor s_monster = s_line[2];
-					Actor s_monster = null;
-
+					int i_level = Integer.parseInt(s_line[1]);
+					Area area = null;
+					if (s_line[2].equals("null")){
+						area = new Area(s_descString, i_level, null);
+					} else {
+						Actor monster = new Monster(s_line[2]);
+						area = new Area(s_descString, i_level, monster);
+					}
 					//New blank Area gets added to every cell.
-					Area blankArea = new Area(s_descString, s_level, s_monster);
-					grid[i][j] = blankArea;
+					
+					grid[i][j] = area;
 				}
 			}
 
