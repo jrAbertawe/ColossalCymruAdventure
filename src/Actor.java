@@ -114,6 +114,10 @@ public abstract class Actor {
         public void setGold(int gold) {
             this.gold = gold;
         }
+        
+        public int getLevel() {
+        	return level;
+        }
 
         public Item getCurrentWeapon() {
             return currentWeapon;
