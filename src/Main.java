@@ -22,23 +22,27 @@ public class Main {
 
   /**
    * Runs from the Java terminal to initiate the game.
-   * 
+   *
    * <p>Side-effect free.
    *
    * @param args Arguments with which the program can be called (null).
    * @throws FileNotFoundException if file is not found.
    */
-  public static void main(String[] args) throws FileNotFoundException {
+  public static void main(final String[] args) throws FileNotFoundException {
 
     System.out.println("Welcome to " + GAME_NAME + "!");
-
+   final String regex = "^[A-Za-z\\s]+$";
+    System.out.println("What is your name Hero?");
     Scanner menuScanner = new Scanner(System.in); // Reads user input.
+    String playerName = menuScanner.nextLine();
+    if (playerName.matches(regex)){
     boolean menuDecision = true; // Establish game exit point.
 
     // Creates new player.
-    Player player = new Player("Player 1", 0, 5);
+    Player player = new Player(playerName, 100, 0, 5);
     // Game Loop until decision is reached to quit the game.
     while (menuDecision && player.getCurrentHealth() != 0) {
+      System.out.println("Welcome" + " " + playerName);
       System.out.println("Do you want to:");
       System.out.println("make a (new) game");
       System.out.println("(quit) to desktop");
@@ -64,5 +68,10 @@ public class Main {
       }
     }
     menuScanner.close();
+  }
+  else{
+    System.out.println("Sorry that name is not permitted, please try again!");
+    return;
+  }
   }
 }

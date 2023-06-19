@@ -1,49 +1,123 @@
 /**
- * This file describes an Actor: a character in the game.
- */
-/**
  * This class describes an Actor: a character in the game.
  *
  * @author jackroberts
- * 
- * @version 1.1
- * @modified 2023-06-10
+ *
+ * @version 1.5
+ *
+ * @modifiedBy Matthew Lane, Zac Healy & Owain Greener
+ * @modified 2023-06-19
  */
 public abstract class Actor {
   private String name; // Name of actor.
-  private int armourClass;
-  private int currentHealth;
-  private int currentLevel;
+  private int armourClass; // Initial armour class/rating.
+  private int currentHealth; // Current health updated throughout the game.
+  protected int currentLevel; // Name player level updated throught the game.
+  protected int maxHealth = 100; // Maximum health any actor can have.
+  protected int maxGold = 9999999; // Maximum gold any player can have at one time.
 
-  public Actor(String name, int currentHealth, int currentLevel,
-      int armourClass) {
+  /**
+   * Constructor for the Actor Class.
+   *
+   * @param name sets the name of the Actor.
+   * @param maxHealth sets the max health of the Actor
+   * @param currentLevel sets the level of the actor.
+   * @param armourClass sets the armour class of the actor.
+   * <p>
+   * Side-effect free. Not referentially transparent.
+   *
+   */
+
+  public Actor(final String name, final int maxHealth, final int currentLevel, final int armourClass) {
     this.name = name;
-    this.currentHealth = currentHealth;
+    this.currentHealth = maxHealth;
     this.currentLevel = currentLevel;
     setArmourClass(armourClass);
   }
 
-  public void setActorLevel(int newActorLevel) {
-    newActorLevel = currentLevel;
+  /**
+   * Sets the actor level.
+   *
+   * @param newActorLevel new level to be set for the actor.
+   * <p>
+   * Side-effect free. Not referentially transparent.
+   *
+   *
+   */
+
+  public final void setActorLevel(final int newActorLevel) {
+    this.currentLevel = newActorLevel;
   }
 
-  public int currentActorLevel() {
+  /**
+   * Retrieves the current level of an actor.
+   *
+   * <p>
+   * Side-effect free. Not referentially transparent.
+   *
+   * @return the current level of an actor.
+   */
+
+  public final int currentActorLevel() {
     return this.currentLevel;
   }
 
-  public void setCurrentHealth(int currentHealth) {
+  /**
+   * Sets the health of a actor.
+   *
+   * @param currentHealth int that will be set for actor.
+   * <p>
+   * Side-effect free. Not referentially transparent.
+   *
+   *
+   */
+
+  public final void setCurrentHealth(final int currentHealth) {
+    if (currentHealth > maxHealth){
+      System.out.println("Sorry that amount of health is too high, setting health to 100!");
+      this.currentHealth = maxHealth;
+    } else {
     this.currentHealth = currentHealth;
+    }
   }
 
-  public int getCurrentHealth() {
+  /**
+   * Retrieves the current health of a actor.
+   *
+   * <p>
+   * Side-effect free. Not referentially transparent.
+   *
+   * @return the current health of an actor.
+   */
+
+  public final int getCurrentHealth() {
     return currentHealth;
   }
 
-  public int getArmourClass() {
+  /**
+   * Retrieves the level of the current armourClass for a actor.
+   *
+   * <p>
+   * Side-effect free. Not referentially transparent.
+   *
+   * @return armourClass for the actor.
+   */
+
+  public final int getArmourClass() {
     return armourClass;
   }
 
-  public void setArmourClass(int armourClass) {
+  /**
+   * Sets the level of the armour class for a actor.
+   *
+   * @param armourClass new rating of the armour class for the player.
+   * <p>
+   * Side-effect free. Not referentially transparent.
+   *
+   *
+   */
+
+  public final void setArmourClass(final int armourClass) {
     if (armourClass < 0) {
       this.armourClass = 0;
     } else if (this.armourClass > (armourClass / 2)) {
@@ -53,14 +127,23 @@ public abstract class Actor {
     }
   }
 
-  public void increaseLevel() {
+  /**
+   * Increases the level of the player.
+   *
+   * <p>
+   * Side-effect free. Not referentially transparent.
+   *
+   *
+   */
+  public final void increaseLevel() {
     currentLevel++;
   }
 
   /**
    * Retrieves the name of the actor.
-   * 
-   * <p>Side-effect free. Not referentially transparent.
+   *
+   * <p>
+   * Side-effect free. Not referentially transparent.
    *
    * @return the name of the actor
    */
@@ -70,12 +153,13 @@ public abstract class Actor {
 
   /**
    * Sets the name of the actor.
-   * 
-   * <p>Side-effect changes the actor's name.
+   *
+   * <p>
+   * Side-effect changes the actor's name.
    *
    * @param name the new name of the actor
    */
-  public void setName(String name) {
+  public void setName(final String name) {
     this.name = name;
   }
 }
