@@ -8,7 +8,7 @@ import java.util.Random;
  */
 public abstract class Actor {
 
-    private int level;
+    protected int level;
     private String name;
     private int armourClass;
     private int health;
@@ -118,6 +118,10 @@ public abstract class Actor {
         public int getLevel() {
         	return level;
         }
+        
+        public int getGainedXP() {
+        	return gainedXP;
+        }
 
         public Item getCurrentWeapon() {
             return currentWeapon;
@@ -138,9 +142,6 @@ public abstract class Actor {
                     level += 1;
                     System.out.println("You have leveled up! You are now level "
                             + level + ".");
-                } else {
-                    System.out.println("You gained " + gainedXP + " experience " +
-                            "points.");
                 }
             } else if (experience < MINIMUM_EXP) {
             throw new IllegalArgumentException("Experience cannot be " +
