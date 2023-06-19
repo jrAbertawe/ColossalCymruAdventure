@@ -26,10 +26,11 @@ public class GameManager {
 		
 		System.out.println("Controls:");
 		System.out.println("Use n, e, s & w to move North, East, South and West.");
-		System.out.println("Type 'use' to use an item from inventory.")
-		System.out.println("Type 'attack' to atack a monster.")
-		System.out.println("Type 'stats' to view the player info.")
-		System.out.println("Type 'quit' to quit the game.")
+		System.out.println("Type 'use' to use an item from inventory.");
+		System.out.println("Type 'attack' to atack a monster.");
+		System.out.println("Type 'stats' to view the player info.");
+		System.out.println("Type 'quit' to quit the game.");
+		System.out.println();
 		
 		Scanner actionScanner = new Scanner(System.in);
 
@@ -47,6 +48,9 @@ public class GameManager {
 						+ " I'd output its name if my code were finished.");
 			}
 
+			player.calculatePlayersLevel(player.getLevel(), player.getExperience(), player.getGainedXP());
+			System.out.println();
+			
 			System.out.println("What now?\n"); //Prompt for user input.
 
 			String actionChoice = actionScanner.nextLine();
@@ -101,6 +105,7 @@ public class GameManager {
 					case "stats":
 						//Bring up the player statistics -- NEW FEATURE
 						displayStats();
+						break;
 					case "quit":
 						//Allow a user to return to main menu.
 						returnToMainMenu = true;
@@ -132,34 +137,35 @@ public class GameManager {
 		}
 	}
 
-	/**
-	 * Begins option to use items.
-	 */
 	private static void beginUse() {
-System.out.println("WARNING - Feature uncomplete");
-		
-		//Display user interface with player's inventory and numbered options to choose which item to use.
-		System.out.println("Choose the item you wish to use:");
-		int i = 0;
-		for (Item s : player.getInventory()) {
-			System.out.println(i + " - " + s.getName());
-			i++;
+		System.out.println("WARNING - Feature uncomplete");
+		if(player.getInventory().isEmpty()) {
+			System.out.println("Inventory is empty, keep searching for items.");
 		}
-		
-		Scanner useScanner = new Scanner(System.in); //initiate scanner to let user pick item to use
-		int itemChoice = useScanner.nextInt();		 //user input will select item
-		
-		Item chosenItem = player.getInventory().get(itemChoice); //get the item object from the inventory
-		
-		//call the use item method and pass in the player attributes
-		int[] stats = chosenItem.UseItem(player.getGold(), player.getHealth()
-				, player.getExperience());
-		
-		//update player attributes
-		player.setGold(stats[0]);
-		player.setHealth(stats[1]);
-		player.setExperience(stats[2]);
-		
+			else {
+				//Display user interface with player's inventory and numbered options to choose which item to use.
+				System.out.println("Choose the item you wish to use:");
+				int i = 0;
+				for (Item s : player.getInventory()) {
+					System.out.println(i + " - " + s.getName());
+					i++;
+				}
+					
+				Scanner useScanner = new Scanner(System.in); //initiate scanner to let user pick item to use
+				int itemChoice = useScanner.nextInt();		 //user input will select item
+					
+				Item chosenItem = player.getInventory().get(itemChoice); //get the item object from the inventory
+					
+				//call the use item method and pass in the player attributes
+				int[] stats = chosenItem.UseItem(player.getGold(), player.getHealth()
+						, player.getExperience());
+					
+				//update player attributes
+				player.setGold(stats[0]);
+				player.setHealth(stats[1]);
+				player.setExperience(stats[2]);
+			}
+				
 	}
 	
 	private static void displayStats() {
