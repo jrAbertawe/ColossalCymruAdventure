@@ -23,7 +23,14 @@ public class GameManager {
 	public static void beginGame() {
 
 		boolean returnToMainMenu = false; //Allow exit of game loop.
-
+		
+		System.out.println("Controls:");
+		System.out.println("Use n, e, s & w to move North, East, South and West.");
+		System.out.println("Type 'use' to use an item from inventory.")
+		System.out.println("Type 'attack' to atack a monster.")
+		System.out.println("Type 'stats' to view the player info.")
+		System.out.println("Type 'quit' to quit the game.")
+		
 		Scanner actionScanner = new Scanner(System.in);
 
 		//Game Loop until decision is reached to return to main menu.
@@ -91,6 +98,9 @@ public class GameManager {
 						//Handle player attacking a monster.
 						beginBattle();
 						break;
+					case "stats":
+						//Bring up the player statistics -- NEW FEATURE
+						displayStats();
 					case "quit":
 						//Allow a user to return to main menu.
 						returnToMainMenu = true;
@@ -150,8 +160,16 @@ System.out.println("WARNING - Feature uncomplete");
 		player.setHealth(stats[1]);
 		player.setExperience(stats[2]);
 		
-		useScanner.close();
-		
+	}
+	
+	private static void displayStats() {
+		System.out.print("Gold: " + player.getGold() + "\t\t");
+		System.out.print("Health: " + player.getHealth() + "\t");
+		System.out.println("Level: " + player.getLevel());
+		int nextLevelExp = (int) (3 * (player.getLevel() * 0.1) + 10);
+		int currentExp = player.getExperience();
+		int remainingExp = nextLevelExp - currentExp;
+		System.out.println(remainingExp + "xp requierd to Level Up");
 	}
 
 
