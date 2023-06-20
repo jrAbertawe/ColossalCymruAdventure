@@ -73,6 +73,10 @@ public class GameManager {
 					//Handle player attacking a monster.
 					beginBattle();
 					break;
+				case "map":
+					//Show the map to the user.
+					showMap();
+					break;
 				case "quit":
 					//Allow a user to return to main menu.
 					returnToMainMenu = true;
@@ -107,6 +111,27 @@ public class GameManager {
 		System.out.println("WARNING - Feature Unimplemented");
 		//TODO Handle using items if the player has them.
 	}
-	
+
+	private static void showMap(){
+		for (int x = 0; x < GAME_MAP.MAX_MAP_SIZE; x++) {
+			System.out.println("---------------");
+			for (int y = 0; y < GAME_MAP.MAX_MAP_SIZE; y++) {
+				//New blank Area gets added to every cell.
+				System.out.print("|");
+
+				if (GAME_MAP.getMonsterAt(x,y) == null) {
+					System.out.print(" ");
+				} else {
+					System.out.print("X");
+				}
+
+
+				System.out.print("|");
+			}
+			System.out.println(); // Blank line
+		}
+		System.out.println("---------------");
+	}
+
 
 }
